@@ -1,0 +1,11 @@
+<?xml version="1.1" ?>
+<settings>
+    <global>
+        <x_offset>0</x_offset>
+        <y_offset>0</y_offset>
+    </global>
+    <kensai>
+        <x_offset>1170</x_offset>
+        <y_offset>114</y_offset>
+    </kensai>
+</settings>

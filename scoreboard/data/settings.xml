@@ -1,0 +1,99 @@
+<?xml version="1.1" ?>
+<settings>
+    <!--
+        This file controls the settings for the Scoreboard plugin.
+        Settings in the <global> section apply to all characters
+        
+        The available settings are:
+        posX - x coordinate for position
+        posY - y coordinate for position
+        numPlayers - The maximum number of players to display damage for
+        bgTransparency - Transparency level for the background. 0-255 range
+    -->
+    <global>
+        <UpdateFrequency>0.5</UpdateFrequency>
+        <bgtransparency>0</bgtransparency>
+        <display>
+            <bg>
+                <alpha>0</alpha>
+                <blue>0</blue>
+                <green>0</green>
+                <red>0</red>
+                <visible>false</visible>
+            </bg>
+            <flags>
+                <bold>false</bold>
+                <bottom>false</bottom>
+                <draggable>true</draggable>
+                <italic>false</italic>
+                <right>false</right>
+            </flags>
+            <padding>0</padding>
+            <pos>
+                <x>500</x>
+                <y>100</y>
+            </pos>
+            <text>
+                <alpha>255</alpha>
+                <blue>250</blue>
+                <font>Droid Sans Mono</font>
+                <fonts>
+
+                </fonts>
+                <green>252</green>
+                <red>253</red>
+                <size>8</size>
+                <stroke>
+                    <alpha>127</alpha>
+                    <blue>18</blue>
+                    <green>97</green>
+                    <red>136</red>
+                    <width>1.5</width>
+                </stroke>
+            </text>
+        </display>
+        <numplayers>8</numplayers>
+        <posx>10</posx>
+        <posy>250</posy>
+        <resetfilters>true</resetfilters>
+        <sbcolor>204</sbcolor>
+        <showallidps>true</showallidps>
+        <showfellow>true</showfellow>
+        <visible>false</visible>
+    </global>
+    <jooks>
+        <display>
+            <bg>
+                <alpha>200</alpha>
+            </bg>
+            <pos>
+                <x>973</x>
+                <y>88</y>
+            </pos>
+            <text>
+                <blue>255</blue>
+                <font>Courier New</font>
+                <green>255</green>
+                <red>255</red>
+                <size>10</size>
+                <stroke>
+                    <alpha>-3.183780379896e+038</alpha>
+                </stroke>
+            </text>
+        </display>
+        <visible>true</visible>
+    </jooks>
+    <kensai>
+        <display>
+            <pos>
+                <x>973</x>
+                <y>88</y>
+            </pos>
+            <text>
+                <stroke>
+                    <alpha>-4.5320985583956e+206</alpha>
+                </stroke>
+            </text>
+        </display>
+    </kensai>
+</settings>

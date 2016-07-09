@@ -1,0 +1,102 @@
+<?xml version="1.1" ?>
+<settings>
+    <global>
+        <abl>Addendum: Black</abl>
+        <ae>Aero</ae>
+        <ae2>Aero II</ae2>
+        <ae3>Aero III</ae3>
+        <ae4>Aero IV</ae4>
+        <altep>Teleport-Altep</altep>
+        <awh>Addendum: White</awh>
+        <bb>Blink</bb>
+        <bl>Blizzard</bl>
+        <bl2>Blizzard II</bl2>
+        <bl3>Blizzard III</bl3>
+        <bl4>Blizzard IV</bl4>
+        <c1>Cure</c1>
+        <c2>Cure II</c2>
+        <c3>Cure III</c3>
+        <c4>Cure IV</c4>
+        <c5>Cure V</c5>
+        <c6>Cure VI</c6>
+        <cel>Celerity</cel>
+        <cw1>Curing Waltz</cw1>
+        <cw2>Curing Waltz II</cw2>
+        <cw3>Curing Waltz III</cw3>
+        <cw4>Curing Waltz IV</cw4>
+        <cw5>Curing Waltz V</cw5>
+        <da>Dark Arts</da>
+        <dem>Teleport-Dem</dem>
+        <ds>Divine Seal</ds>
+        <es>Elemental Seal</es>
+        <fi>Fire</fi>
+        <fi2>Fire II</fi2>
+        <fi3>Fire III</fi3>
+        <fi4>Fire IV</fi4>
+        <holla>Teleport-Holla</holla>
+        <hw>Healing Waltz</hw>
+        <ichi>Utsusemi: Ichi</ichi>
+        <jugner>Recall-Jugner</jugner>
+        <la>Light Arts</la>
+        <lib>Libra</lib>
+        <mea>Teleport-Mea</mea>
+        <meri>Recall-Meriph</meri>
+        <meriph>Recall-Meriph</meriph>
+        <mv>Modus Veritas</mv>
+        <ni>Utsusemi: Ni</ni>
+        <pash>Recall-Pashh</pash>
+        <pashh>Recall-Pashh</pashh>
+        <pen>Penury</pen>
+        <ph>Phalanx</ph>
+        <ph2>Phalanx II</ph2>
+        <pro1>Protect</pro1>
+        <pro2>Protect II</pro2>
+        <pro3>Protect III</pro3>
+        <pro4>Protect IV</pro4>
+        <pro5>Protect V</pro5>
+        <pror1>Protectra</pror1>
+        <pror2>Protectra II</pror2>
+        <pror3>Protectra III</pror3>
+        <pror4>Protectra IV</pror4>
+        <pror5>Protectra V</pror5>
+        <r1>Raise</r1>
+        <r2>Raise II</r2>
+        <r3>Raise III</r3>
+        <re1>Regen</re1>
+        <re2>Regen II</re2>
+        <re3>Regen III</re3>
+        <re4>Regen IV</re4>
+        <re5>Regen V</re5>
+        <rf>Refresh</rf>
+        <rf2>Refresh 2</rf2>
+        <sh1>Shell</sh1>
+        <sh2>Shell II</sh2>
+        <sh3>Shell III</sh3>
+        <sh4>Shell IV</sh4>
+        <sh5>Shell V</sh5>
+        <she1>Shellra</she1>
+        <she2>Shellra II</she2>
+        <she3>Shellra III</she3>
+        <she4>Shellra IV</she4>
+        <she5>Shellra V</she5>
+        <ss>Stoneskin</ss>
+        <st>Stone</st>
+        <st2>Stone II</st2>
+        <st3>Stone III</st3>
+        <st4>Stone IV</st4>
+        <th>Thunder</th>
+        <th2>Thunder II</th2>
+        <th3>Thunder III</th3>
+        <th4>Thunder IV</th4>
+        <utsu1>Utsusemi: Ichi</utsu1>
+        <utsu2>Utsusemi: Ni</utsu2>
+        <vahzl>Teleport-Vahzl</vahzl>
+        <voke>Provoke</voke>
+        <wa>Water</wa>
+        <wa2>Water II</wa2>
+        <wa3>Water III</wa3>
+        <wa4>Water IV</wa4>
+        <yhoat>Teleport-Yhoat</yhoat>
+        <zerk>Berserk</zerk>
+    </global>
+</settings>

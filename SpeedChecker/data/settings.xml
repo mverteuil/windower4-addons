@@ -1,0 +1,42 @@
+<?xml version="1.1" ?>
+<settings>
+    <global>
+        <bg>
+            <alpha>255</alpha>
+            <blue>0</blue>
+            <green>0</green>
+            <red>0</red>
+            <visible>false</visible>
+        </bg>
+        <flags>
+            <bold>false</bold>
+            <bottom>false</bottom>
+            <draggable>true</draggable>
+            <italic>false</italic>
+            <right>false</right>
+        </flags>
+        <padding>0</padding>
+        <pos>
+            <x>1076</x>
+            <y>22</y>
+        </pos>
+        <text>
+            <alpha>255</alpha>
+            <blue>250</blue>
+            <font>Droid Sans Mono</font>
+            <fonts>
+
+            </fonts>
+            <green>252</green>
+            <red>253</red>
+            <size>8</size>
+            <stroke>
+                <alpha>532776095355</alpha>
+                <blue>18</blue>
+                <green>97</green>
+                <red>136</red>
+                <width>1.5</width>
+            </stroke>
+        </text>
+    </global>
+</settings>

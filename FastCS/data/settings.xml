@@ -1,0 +1,9 @@
+<?xml version="1.1" ?>
+<settings>
+    <global>
+        <exclusions>home point #2,home point #4,waypoint,survival guide,home point #3,home point #1,home point #5</exclusions>
+        <frame_rate_divisor>2</frame_rate_divisor>
+    </global>
+</settings>
+
+

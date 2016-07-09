@@ -1,0 +1,24 @@
+<?xml version="1.1" ?>
+<settings>
+    <global>
+        <auto_heal>false</auto_heal>
+        <bag_priority>
+            <1>Safe</1>
+            <2>Locker</2>
+            <3>Storage</3>
+            <4>Satchel</4>
+            <5>Sack</5>
+            <6>Case</6>
+            <7>Inventory</7>
+            <8>Wardrobe</8>
+        </bag_priority>
+        <default_file>default.lua</default_file>
+        <dump_bags>
+            <1>Safe</1>
+            <2>Locker</2>
+            <3>Storage</3>
+        </dump_bags>
+        <item_delay>0</item_delay>
+        <verbose>false</verbose>
+    </global>
+</settings>

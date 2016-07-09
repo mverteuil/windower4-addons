@@ -1,0 +1,41 @@
+<?xml version="1.1" ?>
+<settings>
+    <global>
+        <active_text>
+            <alpha>255</alpha>
+            <blue>255</blue>
+            <font>Courier New</font>
+            <green>255</green>
+            <red>255</red>
+            <size>12</size>
+        </active_text>
+        <autocolor>true</autocolor>
+        <bg>
+            <alpha>255</alpha>
+            <blue>0</blue>
+            <green>0</green>
+            <red>0</red>
+            <visible>true</visible>
+        </bg>
+        <flags>
+            <bold>false</bold>
+            <bottom>false</bottom>
+            <italic>false</italic>
+            <right>false</right>
+        </flags>
+        <frames_per_tick>30</frames_per_tick>
+        <inactive_text>
+            <alpha>255</alpha>
+            <blue>255</blue>
+            <font>Courier New</font>
+            <green>255</green>
+            <red>255</red>
+            <size>10</size>
+        </inactive_text>
+        <pos>
+            <x>925.33333333333</x>
+            <y>1063</y>
+        </pos>
+        <timeout>3</timeout>
+    </global>
+</settings>

@@ -45,3 +45,7 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# GS Exports
+findAll/data/storages.json
+GearSwap/data/export/

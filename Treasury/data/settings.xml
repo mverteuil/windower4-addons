@@ -1,0 +1,12 @@
+<?xml version="1.1" ?>
+<settings>
+    <global>
+        <AutoDrop>true</AutoDrop>
+        <AutoStack>true</AutoStack>
+        <Delay>1</Delay>
+        <Drop>2Leaf Mandra Bud,Insect Wing,Hydra Bracers,Hydra Haubert</Drop>
+        <Lot />
+        <Pass />
+        <Verbose>false</Verbose>
+    </global>
+</settings>

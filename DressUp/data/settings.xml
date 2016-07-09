@@ -1,0 +1,74 @@
+<?xml version="1.1" ?>
+<settings>
+    <global>
+        <autoupdate>false</autoupdate>
+        <blinking>
+            <all>
+                <always>false</always>
+                <combat>false</combat>
+                <target>false</target>
+            </all>
+            <follow>
+                <always>false</always>
+                <combat>false</combat>
+                <target>false</target>
+            </follow>
+            <others>
+                <always>false</always>
+                <combat>false</combat>
+                <target>false</target>
+            </others>
+            <party>
+                <always>false</always>
+                <combat>false</combat>
+                <target>false</target>
+            </party>
+            <self>
+                <always>false</always>
+                <combat>false</combat>
+                <target>false</target>
+            </self>
+        </blinking>
+        <kensai>
+
+        </kensai>
+        <others>
+
+        </others>
+        <profiles>
+
+        </profiles>
+        <replacements>
+            <body>
+
+            </body>
+            <face>
+
+            </face>
+            <feet>
+
+            </feet>
+            <hands>
+
+            </hands>
+            <head>
+
+            </head>
+            <legs>
+
+            </legs>
+            <main>
+
+            </main>
+            <race>
+
+            </race>
+            <ranged>
+
+            </ranged>
+            <sub>
+
+            </sub>
+        </replacements>
+    </global>
+</settings>

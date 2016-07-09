@@ -1,0 +1,62 @@
+<?xml version="1.1" ?>
+<settings>
+    <global>
+        <bg>
+            <alpha>255</alpha>
+            <blue>0</blue>
+            <green>0</green>
+            <red>0</red>
+            <visible>true</visible>
+        </bg>
+        <dangerwords>
+            <spells>Thundaja,Kaustra,Thundaga IV,Aeroja,Stoneja,Aeroga IV,Breakga,Meteor,Firaga IV,Death,Stonega IV,Blizzaga IV,Blizzaja,Firaja</spells>
+            <weaponskills>Geirrothr,Yama&apos;s Judgment,Astral Flow,Oblivion&apos;s Mantle,Extreme Purgitation,Frog Chorus,Thundris Shriek,Rancid Reflux,Chainspell,Divesting Gale,Ballistic Kick,Slimy Proposal,Mandible Massacre,Eradicator,Zantetsuken,Frog Song,Fulmination,Arm Cannon,Danse Macabre,Nerve Gas,Pawn&apos;s Penumbra,Raksha Stance,Gates of Hades,Gorge,Beastruction</weaponskills>
+        </dangerwords>
+        <duration>10</duration>
+        <flags>
+            <bold>false</bold>
+            <bottom>false</bottom>
+            <draggable>true</draggable>
+            <italic>false</italic>
+            <right>false</right>
+        </flags>
+        <moblist>
+            <abyssea>Alfard,Isgebind,Glavoid,Carabosse,Orthrus</abyssea>
+            <dangerous>Apademak,Provenance Watcher</dangerous>
+            <legion>Soaring,Mired,Veiled,Paramount,Lofty</legion>
+            <meebles>Goldwing,Izyx,Umagrhk,Grannus,Silagilith,Svaha,Samursk,Melisseus,Dreyruk,Surtr</meebles>
+            <other>Cerberus,Hydra,Enraged,Dvergr,Khimaira,Bloodthirsty,Odin,Tiamat,Khrysokhimaira</other>
+            <voidwatch>Provenance Watcher,Bismarck,Shah,Wazir,Goji,Hahava,Gaunab,Pil,Ig-Alima,Taweret,Mellonia,Botulus Rex,Giltine,Uptala,Agathos,Kaggen,Aello,Celaeno,Rukh,Gugalanna,Gasha,Kholomodumo,Belphoebe,Ocythoe,Akvan,Morta,Kalasutrax,Cherufe,Asb,Qilin,Sarbaz</voidwatch>
+        </moblist>
+        <padding>0</padding>
+        <pos>
+            <x>400</x>
+            <y>300</y>
+        </pos>
+        <selfrolls>false</selfrolls>
+        <showrolls>true</showrolls>
+        <staggeronly>false</staggeronly>
+        <text>
+            <alpha>255</alpha>
+            <blue>255</blue>
+            <content>
+
+            </content>
+            <font>Consolas</font>
+            <fonts>
+
+            </fonts>
+            <green>255</green>
+            <red>255</red>
+            <size>10</size>
+            <stroke>
+                <alpha>1.#INF</alpha>
+                <blue>0</blue>
+                <green>0</green>
+                <red>0</red>
+                <width>0</width>
+            </stroke>
+        </text>
+        <visible>false</visible>
+    </global>
+</settings>

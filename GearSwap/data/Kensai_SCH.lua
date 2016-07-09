@@ -1,6 +1,7 @@
 --[[ Kensai - Scholar ]]--
 
 require('sets')
+require('strings')
 
 --[[ Zone IDs ]]
 
@@ -30,7 +31,7 @@ function get_sets()
     --{{ Idle Gear }}--
     sets.Idle = {
         main=staves[current_staff], sub="Axe Grip", ammo="Morion Tathlum",
-        head="Hagondes Hat +1", neck="Incanter's Torque", left_ear="Moldavite Earring", right_ear={ name="Moonshade Earring", augments={'Attack+4','Latent effect: "Regain"+1',}},
+        head="Hagondes Hat +1", neck="Caract Choker", left_ear="Moldavite Earring", right_ear={ name="Moonshade Earring", augments={'Attack+4','Latent effect: "Regain"+1',}},
         body="Orvail Robe +1", hands="Yaoyotl Gloves", left_ring="Acumen Ring", right_ring="Weather. Ring",
         back="Bookworm's Cape", waist="Salire Belt", legs="Wayfarer Slops", feet="Kandza Crackows",
     }
@@ -38,6 +39,13 @@ function get_sets()
     sets.Engaged = set_combine(sets.Idle, {
         body="Wayfarer Robe",
     })
+
+    sets.Casting = set_combine(sets.Engaged, {
+        neck="Incanter's Torque"
+    })
+
+    sets.Spells = {}
+    sets.Spells.Cure = {back="Pahtli Cape", }
 
     --{{ Movement Speed Gear }}--
     sets.movement = {}
@@ -65,11 +73,11 @@ function get_sets()
     send_command("alias g13_m1g16 input /hydrohelix")
     send_command("alias g13_m1g17 input /anemohelix")
     send_command("alias g13_m1g18 input /pyrohelix")
-    send_command("alias g13_m1g19 input /ionohelix")
+    send_command("alias g13_m1g19 input /cryohelix")
 
-    send_command("alias g13_m1g20 input /noctohelix")
-    send_command("alias g13_m1g21 input /luminohelix")
-    send_command("alias g13_m1g22 input /modusveritas")
+    send_command("alias g13_m1g20 input /ionohelix")
+    send_command("alias g13_m1g21 input /noctohelix")
+    send_command("alias g13_m1g22 input /luminohelix")
 
     send_command("alias stp_m1 input /addendumwhite")
     send_command("alias stp_m2 input /penury")
@@ -97,11 +105,52 @@ function get_sets()
     send_command("alias stp_m21 input /elivira")
 
     send_command("alias si input /sneak;wait 7;/invisible;")
- end
+end
+
+
+
+
+
+function precast(spell)
+    if spell.type:endswith('Magic') then
+        new_set = sets.Casting
+        -- Spell Species
+        if spell.name:startswith('Cure') then
+            new_set = set_combine(new_set, sets.Spells.Cure)
+        end
+        equip(new_set)
+    end
+end
+
+
+function midcast(spell)
+    -- pass
+end
+
+
+function aftercast(spell)
+    equip(sets.Engaged)    
+end
+
+
+function status_change(new, old)
+    equip(sets[new]) 
+end
+
+
+function self_command(command)
+    sets.Idle.main = staves[tonumber(command)]
+    sets.Engaged.main = staves[tonumber(command)]
+    equip(sets.Idle)
+end
+
+
+--[ Additional Event Handlers ]--
 
 windower.register_event('zone change', function (new_id, old_id)
     send_command('wait 5;input /echo ZONE ID '..new_id)
-    -- Create the movement set
+
+    -- Build movement set by area
     if ADOULIN:contains(new_id) then
         movement_set = set_combine(sets.Idle, sets.movement.adoulin)
     elseif SANDORIA:contains(new_id) then
@@ -112,25 +161,3 @@ windower.register_event('zone change', function (new_id, old_id)
     -- Apply the movement set
     equip(movement_set)
 end)
-
-function precast(spell)
-    
-end
-
-function midcast(spell)
-    
-end
-
-function aftercast(spell)
-    
-end
-
-function status_change(new, old)
-   equip(sets[new]) 
-end
-
-function self_command(command)
-    sets.Idle.main = staves[tonumber(command)]
-    sets.Engaged.main = staves[tonumber(command)]
-    equip(sets.Idle)
-end

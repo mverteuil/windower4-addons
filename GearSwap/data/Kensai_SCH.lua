@@ -6,6 +6,7 @@ require('strings')
 --[[ Zone IDs ]]
 
 ADOULIN = S{256, 257}
+DYNAMIS = S{42}
 SANDORIA = S{230, 231, 232, 233}
 
 --[[ Utilities ]]--
@@ -22,7 +23,8 @@ function get_sets()
     
     staves = {
         "Eminent Staff",
-        "Shillelagh",
+        { name="Slaine", augments={'Attack+3',}},
+        "Crook",
     }
     current_staff = 1
 
@@ -45,13 +47,74 @@ function get_sets()
     })
 
     sets.Spells = {}
-    sets.Spells.Cure = {back="Pahtli Cape", }
+    sets.Spells.Cure = {main='Iridialyo Staff', back="Pahtli Cape", }
 
     --{{ Movement Speed Gear }}--
     sets.movement = {}
     sets.movement.adoulin = {body="Councilor's Garb"}
     sets.movement.sandoria = {body="Kingdom Aketon"}
 
+    set_aliases()
+    set_trusts()    
+end
+
+--[ Windower Events ]--
+
+function precast(spell)
+    if spell.type:endswith('Magic') then
+        new_set = sets.Casting
+        -- Spell Species
+        if spell.name:startswith('Cure') then
+            new_set = set_combine(new_set, sets.Spells.Cure)
+        end
+        equip(new_set)
+    end
+end
+
+
+function midcast(spell)
+    -- pass
+end
+
+
+function aftercast(spell)
+    equip(sets.Engaged)    
+end
+
+
+function status_change(new, old)
+    equip(sets[new]) 
+end
+
+
+function self_command(command)
+    sets.Idle.main = staves[tonumber(command)]
+    sets.Engaged.main = staves[tonumber(command)]
+    equip(sets.Idle)
+end
+
+
+--[ Additional Event Handlers ]--
+
+windower.register_event('zone change', function (new_id, old_id)
+    send_command('wait 5;input /echo ZONE ID '..new_id)
+
+    -- Build movement set by area
+    if ADOULIN:contains(new_id) then
+        movement_set = set_combine(sets.Idle, sets.movement.adoulin)
+    elseif SANDORIA:contains(new_id) then
+        movement_set = set_combine(sets.Idle, sets.movement.sandoria)
+    else
+        movement_set = sets.Idle
+    end
+    -- Apply the movement set
+    equip(movement_set)
+    set_trusts()
+end)
+
+--[ User Functions ]--
+
+function set_aliases()
     -- Macros Be Here
     send_command("alias g13_m1g1 input /sandstorm")
     send_command("alias g13_m1g2 input /rainstorm")
@@ -107,57 +170,39 @@ function get_sets()
     send_command("alias si input /sneak;wait 7;/invisible;")
 end
 
+function set_trusts()
+    local current_zone = windower.ffxi.get_info().zone
+    local trusts = nil
+    if DYNAMIS:contains(current_zone) then
+        trusts = {
+            'NanaaMihgo',
+            'MihliAliapoh',
+            'Leonoyne',
+            'UkaTotlihn',
+            'Tenzen',
+            'Ulmia',
+            'PieujeUC',
+            'Kupipi',
+        }
 
-
-
-
-function precast(spell)
-    if spell.type:endswith('Magic') then
-        new_set = sets.Casting
-        -- Spell Species
-        if spell.name:startswith('Cure') then
-            new_set = set_combine(new_set, sets.Spells.Cure)
-        end
-        equip(new_set)
-    end
-end
-
-
-function midcast(spell)
-    -- pass
-end
-
-
-function aftercast(spell)
-    equip(sets.Engaged)    
-end
-
-
-function status_change(new, old)
-    equip(sets[new]) 
-end
-
-
-function self_command(command)
-    sets.Idle.main = staves[tonumber(command)]
-    sets.Engaged.main = staves[tonumber(command)]
-    equip(sets.Idle)
-end
-
-
---[ Additional Event Handlers ]--
-
-windower.register_event('zone change', function (new_id, old_id)
-    send_command('wait 5;input /echo ZONE ID '..new_id)
-
-    -- Build movement set by area
-    if ADOULIN:contains(new_id) then
-        movement_set = set_combine(sets.Idle, sets.movement.adoulin)
-    elseif SANDORIA:contains(new_id) then
-        movement_set = set_combine(sets.Idle, sets.movement.sandoria)
     else
-        movement_set = sets.Idle
+        trusts = {
+            'Valaineral',
+            'ExcenmilleS',
+            'Korumoru',
+            'ShantottoII',
+            'ZeidII',
+            'Qultada',
+            'PieujeUC',
+            'Kupipi',
+        }
     end
-    -- Apply the movement set
-    equip(movement_set)
-end)
+    send_command("alias stp_m14 input /" .. trusts[1])
+    send_command("alias stp_m15 input /" .. trusts[2])
+    send_command("alias stp_m16 input /" .. trusts[3])
+    send_command("alias stp_m17 input /" .. trusts[4])
+    send_command("alias stp_m18 input /" .. trusts[5])
+    send_command("alias stp_m19 input /" .. trusts[6])
+    send_command("alias stp_m20 input /" .. trusts[7])
+    send_command("alias stp_m21 input /" .. trusts[8])
+end

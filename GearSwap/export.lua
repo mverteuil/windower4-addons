@@ -98,6 +98,8 @@ function export_set(options)
         local gear = table.reassign({},items.equipment)
         local ward = items.wardrobe
         local ward2 = items.wardrobe2
+        local ward3 = items.wardrobe3
+        local ward4 = items.wardrobe4
 
         for i = 1,16 do -- ipairs will be used on item_list
             if not item_list[i] then
@@ -116,6 +118,10 @@ function export_set(options)
                     item_tab = ward[gs_item_tab.slot]
                 elseif gs_item_tab.bag_id == 10 and res.items[ward2[gs_item_tab.slot].id] then
                     item_tab = ward2[gs_item_tab.slot]
+                elseif gs_item_tab.bag_id == 11 and res.items[ward3[gs_item_tab.slot].id] then
+                    item_tab = ward3[gs_item_tab.slot]
+                elseif gs_item_tab.bag_id == 12 and res.items[ward4[gs_item_tab.slot].id] then
+                    item_tab = ward4[gs_item_tab.slot]
                 end
                 if res.items[item_tab.id] then
                     item_list[slot_map[slot_name]+1] = {

@@ -6,7 +6,6 @@ require('strings')
 --[[ Zone IDs ]]
 
 ADOULIN = S{256, 257}
-DYNAMIS = S{42}
 DYNAMIS = S{39, 42}
 SANDORIA = S{230, 231, 232, 233}
 
@@ -33,7 +32,6 @@ function get_sets()
     
     --{{ Idle Gear }}--
     sets.Idle = {
-        main=staves[current_staff], sub="Axe Grip", ammo="Morion Tathlum",
         main=staves[current_staff], sub="Vivid Strap", ammo="Morion Tathlum",
         head="Hagondes Hat +1", neck="Caract Choker", left_ear="Moldavite Earring", right_ear={ name="Moonshade Earring", augments={'Attack+4','Latent effect: "Regain"+1',}},
         body="Orvail Robe +1", hands="Yaoyotl Gloves", left_ring="Acumen Ring", right_ring="Weather. Ring",

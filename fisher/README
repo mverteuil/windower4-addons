@@ -1,0 +1,116 @@
+This script is a automatic fishing addon to be used with Windower for
+Final Fantasy XI.
+
+You can report issues, get the latest version, and view the source at:
+    https://github.com/svanheulen/fisher-windower-addon
+
+***********************************************************************
+I stopped playing FFXI (in February 2015) so I may not be able to help
+with bugs but I'll try... So long as you can give me more information
+then "it doesn't work"
+***********************************************************************
+
+=============================== WARNING ===============================
+THIS CODE IS FOR RESEARCH PURPOSES ONLY. USING THIS CODE IS AGAINST THE
+POL/FFXI TERMS OF SERVICE AND MAY GET YOU BANNED. USE AT YOUR OWN RISK.
+=============================== WARNING ===============================
+
+This addon doesn't actually fight the fish, it waits the provided catch
+delay time and then injects a packet that tells the server the fish has
+zero HP and you're pulling it up. When adding fish or bait, you need to
+use the exact spelling and capitalization (quoted when spaces are
+needed) the game uses OR use item IDs. If the bite ID for the fish is
+unknown it will catch every unknown fish or item (but not monsters),
+when you get the time warning, until it finds the correct bite ID. You
+can also cancel a fish on the line normally at any time.
+
+IMPORTANT NOTE:
+Setting a reasonable catch delay is very important. This is the time it
+will take to pull up your fish after you get a bite. Pulling up a
+legendary fish 2 seconds after it bites is impossible normally and would
+therefor draw attention from other players/GMs. Also setting it too low
+will cause "lack of skill" messages. I would not recommend setting the
+catch delay bellow 2 seconds even for fish that auto-drain instantly.
+
+Fisher will automatically stop running under the following conditions:
+    You reach the 200 fish catch limit for the day.
+    You run out of bait.
+    You run out of inventory space.
+    An action is performed on you by a monster or another player.
+    Your status changes.
+    You receive a message from a GM.
+    You perform an action.
+    You change zones.
+    You get a "You cannot fish here." error multiple times in a row.
+    You don't have a fishing rod equipped.
+
+To install this addon, create a folder called "fisher" inside the
+Windower addons folder and copy the fisher.lua and messages.lua files
+there. Your addon folder is most likely "C:\Program Files
+(x86)\Windower4\addons". 
+
+To load the addon, in the Final Fantasy XI input line, type:
+    //lua load fisher
+
+The available commands are:
+    fisher fish ...
+        fisher fish add <name or item id> <catch delay>
+            Adds to the list of fish to catch.
+        fisher fish remove <name or item id>
+            Removes from the list of fish to catch.
+        fisher fish clear
+            Clears the list of fish to catch.
+        fisher fish list
+            Displays the list of fish to catch.
+    fisher bait ...
+        fisher bait add <name or item id>
+            Adds to the list of bait to use.
+        fisher bait remove <name or item id>
+            Removes from the list of bait to use.
+        fisher bait clear
+            Clears the list of bait to use.
+        fisher bait list
+            Displays the list of bait to use.
+    fisher start
+        Starts fishing.
+    fisher stop
+        Stops fishing.
+    fisher chat <level>
+        Sets the level of detail for output to the chat. (default: 1)
+    fisher log <level>
+        Sets the level of detail for output to the log file. (default: off)
+    fisher equip <on/off>
+        Turns on/off auto-equipping of bait. (default: off)
+    fisher move <on/off>
+        Turns on/off auto-moving of bait/fish between bags. (default: off)
+    fisher senses <on/off>
+        Turns on/off displaying the name of hooked fish. (default: on)
+    fisher fatigue <count>
+        Sets remaining catches until fatigued.
+    fisher stats [clear]
+        Displays (or clears) stats about your fishing.
+    fisher resetdb
+        Resets all known bite IDs from settings file.
+	fisher random <on/ff>
+		This setting will randomize your casting, catching, and release time. (default: off)
+		When set to on, your specified catch delay time will randomly be +/- a random number
+		between 0 and 1. The cast and release times will randomly be + a random number
+		between 0 and 1.
+	fisher dncmax <count>
+		This setting will change the maximum number of times you can receive the 
+		"You didn't catch anything." message before stopping fishing. (default: 20)
+
+Examples:
+    //fisher fish add "Moat Carp" 5
+        Add moat carp to the list of fish to catch and catch after it
+        has been on the line for 5 seconds.
+    
+    //fisher fish add 4401 5
+        Same as above except using the item ID of moat carp instead
+        of the name.
+
+    //fisher bait add "Insect Ball"
+        Add ball of insect paste to the list of bait to use.
+
+    //fisher log 3
+        Enable level 3 message logging to the log file.

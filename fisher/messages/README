@@ -1,0 +1,8 @@
+The make_messages.py file is a Python 3.x script used to generate the
+messages.lua file needed for fisher. It will find the install folder for
+the US version of the game in your registry and parse the DAT files to
+find the relavent fishing message IDs. Once it's complete move the new
+messages.lua file to the fisher addon folder.
+
+The settings.py file tells the main script which messages to look for
+and which zone dialog DAT files to search.

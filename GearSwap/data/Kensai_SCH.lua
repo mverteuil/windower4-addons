@@ -7,6 +7,7 @@ require('strings')
 
 ADOULIN = S{256, 257}
 DYNAMIS = S{42}
+DYNAMIS = S{39, 42}
 SANDORIA = S{230, 231, 232, 233}
 
 --[[ Utilities ]]--
@@ -33,6 +34,7 @@ function get_sets()
     --{{ Idle Gear }}--
     sets.Idle = {
         main=staves[current_staff], sub="Axe Grip", ammo="Morion Tathlum",
+        main=staves[current_staff], sub="Vivid Strap", ammo="Morion Tathlum",
         head="Hagondes Hat +1", neck="Caract Choker", left_ear="Moldavite Earring", right_ear={ name="Moonshade Earring", augments={'Attack+4','Latent effect: "Regain"+1',}},
         body="Orvail Robe +1", hands="Yaoyotl Gloves", left_ring="Acumen Ring", right_ring="Weather. Ring",
         back="Bookworm's Cape", waist="Salire Belt", legs="Wayfarer Slops", feet="Kandza Crackows",
@@ -168,6 +170,11 @@ function set_aliases()
     send_command("alias stp_m21 input /elivira")
 
     send_command("alias si input /sneak;wait 7;/invisible;")
+    send_command("alias warp input /equip R.ring \"Warp Ring\"; wait 8; input /item \"Warp Ring\" <me>;")
+    send_command("alias echad input /equip R.ring \"Echad Ring\"; wait 8; input /item \"Echad Ring\" <me>;")
+    send_command("alias empress input /equip R.ring \"Empress Ring\"; wait 8; input /item \"Empress Band\" <me>;")
+    send_command("alias trizek input /equip R.ring \"Trizek Ring\"; wait 8; input /item \"Trizek Ring\" <me>;")
+    
 end
 
 function set_trusts()

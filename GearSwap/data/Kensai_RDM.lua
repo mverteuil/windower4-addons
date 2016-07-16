@@ -1,4 +1,5 @@
 --[[ Kensai - Red Mage ]]--
+packets = require('packets')
 
 --[[ Zone IDs for Movement Speed Gear ]]
 
@@ -95,6 +96,11 @@ function get_sets()
 
     send_command("alias si input /sneak;wait 7;/invisible;")
 
+    safe_to_disengage = true
+    trial_mode = false
+    trial_spell = "Drain"
+
+    send_command("alias staffkill input /equip main \"Teiwaz\"; input /ma Bio 3 <t>; wait 9; input /ma Drain <t>; wait 6; /ma Bio III <t>")
  end
 
 windower.register_event('zone change', function (new_id, old_id)
@@ -111,6 +117,19 @@ windower.register_event('zone change', function (new_id, old_id)
     equip(movement_set)
 end)
 
+windower.register_event('outgoing chunk', function (id, original, modified, injected, blocked)
+    if player.status == 'Engaged' and id == 21 then
+        if player.target and player.target.name == "Flamingo" and player.target.hpp <= 11 and safe_to_disengage and trial_mode then
+            disengager = packets.new('outgoing', 0x01A, {Category=0x04})
+            packets.inject(disengager)
+            safe_to_disengage = false
+            send_command("staffkill")
+        else
+            
+        end
+    end
+end)
+
 function precast(spell)
     
 end
@@ -124,9 +143,17 @@ function aftercast(spell)
 end
 
 function status_change(new, old)
-   equip(sets[new]) 
+   --equip(sets[new]) 
+   if new == "Idle" then
+       safe_to_disengage = true
+    elseif new == 'Engaged' and not (player.equipment.main == "Iztaasu +2") then
+        send_command("input /equip main \"Iztaasu +2\"; wait 2; input /lockon")
+   end
 end
 
 function self_command(command)
-
+    if command == 'tm' then
+        trial_mode = not trial_mode
+    end
+    send_command('input /echo trial mode: ' .. tostring(trial_mode))
 end

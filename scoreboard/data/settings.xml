@@ -13,6 +13,7 @@
     <global>
         <UpdateFrequency>0.5</UpdateFrequency>
         <bgtransparency>0</bgtransparency>
+        <combinepets>true</combinepets>
         <display>
             <bg>
                 <alpha>0</alpha>
@@ -91,7 +92,7 @@
             </pos>
             <text>
                 <stroke>
-                    <alpha>-4.5320985583956e+206</alpha>
+                    <alpha>-1.9162848562098e+216</alpha>
                 </stroke>
             </text>
         </display>

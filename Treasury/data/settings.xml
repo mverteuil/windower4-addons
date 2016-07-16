@@ -4,7 +4,16 @@
         <AutoDrop>true</AutoDrop>
         <AutoStack>true</AutoStack>
         <Delay>1</Delay>
-        <Drop>2Leaf Mandra Bud,Insect Wing,Hydra Bracers,Hydra Haubert</Drop>
+        <Drop>
+        	2Leaf Mandra Bud,
+        	Insect Wing,
+        	Hydra Bracers,
+        	Hydra Haubert,
+        	Hydra Doublet,
+        	Hydra Jupon,
+        	Hydra Gloves,
+        	Hydra Brayettes
+        </Drop>
         <Lot />
         <Pass />
         <Verbose>false</Verbose>

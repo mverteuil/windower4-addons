@@ -701,9 +701,9 @@ function fisher_command(...)
         windower.add_to_chat(204, 'bites: %d, bite rate: %d%%':format(stats.bites, bite_rate))
         windower.add_to_chat(204, 'catches: %d, catch rate: %d%%, catch/bite rate: %d%%':format(stats.catches, catch_rate, catch_bite_rate))
         windower.add_to_chat(204, 'losses: %d, loss rate: %d%%, loss/bite rate: %d%%':format(losses, loss_rate, loss_bite_rate))
-		windower.add_to_chat(204, 'did not catch count: %d':format(stats.didnotcatchcount))
+		windower.add_to_chat(204, 'did not catch count: %d/%d':format(stats.didnotcatchcount, settings.didnotcatchmax))
     elseif #arg == 2 and arg[1]:lower() == 'stats' and arg[2]:lower() == 'clear' then
-        stats = {casts=0, bites=0, catches=0, didnotcatch=0}
+        stats = {casts=0, bites=0, catches=0, didnotcatchcount=0}
         windower.add_to_chat(204, 'reset fishing statistics')
     elseif #arg == 2 and arg[1]:lower() == 'fatigue' then
         local count = tonumber(arg[2])
@@ -726,7 +726,7 @@ function fisher_command(...)
         windower.add_to_chat(204, 'random catch time: %s':format(settings.random and 'on' or 'off'))
         settings:save('all')
 	elseif #arg == 2 and arg[1]:lower() == 'dncmax' then
-		settings.didnotcatchmax = count
+		settings.didnotcatchmax = tonumber(arg[2])
 		settings:save('all')
     else
         windower.add_to_chat(167, 'usage:')

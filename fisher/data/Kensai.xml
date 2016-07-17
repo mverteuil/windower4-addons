@@ -1,30 +1,33 @@
 <?xml version="1.1" ?>
 <settings>
     <global>
-        <chat>2</chat>
+        <chat>0</chat>
         <delay>
             <cast>4</cast>
             <equip>2</equip>
             <move>2</move>
             <release>1</release>
         </delay>
-        <didnotcatchmax>20</didnotcatchmax>
+        <didnotcatchmax>99</didnotcatchmax>
         <equip>false</equip>
         <fatigue>
             <date>2016-07-17</date>
-            <remaining>191</remaining>
+            <remaining>153</remaining>
         </fatigue>
         <fish>
+            <24903683>90</24903683>
             <26214402>19283</26214402>
             <28835843>19308</28835843>
             <31457283>624</31457283>
             <36700161>4443</36700161>
             <39321606>4361</39321606>
+            <40632323>1135</40632323>
+            <40632330>4461</40632330>
             <45875203>1210</45875203>
         </fish>
         <log>-1</log>
         <move>false</move>
-        <random>false</random>
+        <random>true</random>
         <senses>true</senses>
     </global>
 </settings>

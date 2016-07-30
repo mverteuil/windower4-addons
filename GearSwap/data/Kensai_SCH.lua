@@ -2,12 +2,20 @@
 
 require('sets')
 require('strings')
+require('libs/kensai-globals')
 
---[[ Zone IDs ]]
+--[[ Trusts for Strix Macros ]]--
 
-ADOULIN = S{256, 257}
-DYNAMIS = S{39, 42}
-SANDORIA = S{230, 231, 232, 233}
+TRUSTS = {
+    'August',
+    'ExcenmilleS',
+    'Korumoru',
+    'ShantottoII',
+    'ZeidII',
+    'Qultada',
+    'PieujeUC',
+    'Kupipi',
+}
 
 --[[ Utilities ]]--
 
@@ -21,18 +29,12 @@ end
 function get_sets()
     set_language("english")
     
-    staves = {
-        "Eminent Staff",
-        { name="Slaine", augments={'Attack+3',}},
-        "Crook",
-    }
-    current_staff = 1
-
     sets = {}
     
     --{{ Idle Gear }}--
+    sets.Idle = {}
     sets.Idle = {
-        main=staves[current_staff], sub="Vivid Strap", ammo="Morion Tathlum",
+        main="Eminent Staff", sub="Vivid Strap", ammo="Morion Tathlum",
         head="Hagondes Hat +1", neck="Caract Choker", left_ear="Moldavite Earring", right_ear={ name="Moonshade Earring", augments={'Attack+4','Latent effect: "Regain"+1',}},
         body="Orvail Robe +1", hands="Yaoyotl Gloves", left_ring="Acumen Ring", right_ring="Weather. Ring",
         back="Bookworm's Cape", waist="Salire Belt", legs="Wayfarer Slops", feet="Kandza Crackows",
@@ -47,13 +49,14 @@ function get_sets()
     })
 
     sets.Spells = {}
-    sets.Spells.Cure = {main='Iridialyo Staff', back="Pahtli Cape", }
+    sets.Spells.Cure = {main='Tamaxchi', back="Pahtli Cape", }
 
     --{{ Movement Speed Gear }}--
     sets.movement = {}
     sets.movement.adoulin = {body="Councilor's Garb"}
     sets.movement.sandoria = {body="Kingdom Aketon"}
 
+    set_global_aliases()
     set_aliases()
     set_trusts()    
 end
@@ -92,25 +95,6 @@ function self_command(command)
     sets.Engaged.main = staves[tonumber(command)]
     equip(sets.Idle)
 end
-
-
---[ Additional Event Handlers ]--
-
-windower.register_event('zone change', function (new_id, old_id)
-    send_command('wait 5;input /echo ZONE ID '..new_id)
-
-    -- Build movement set by area
-    if ADOULIN:contains(new_id) then
-        movement_set = set_combine(sets.Idle, sets.movement.adoulin)
-    elseif SANDORIA:contains(new_id) then
-        movement_set = set_combine(sets.Idle, sets.movement.sandoria)
-    else
-        movement_set = sets.Idle
-    end
-    -- Apply the movement set
-    equip(movement_set)
-    set_trusts()
-end)
 
 --[ User Functions ]--
 
@@ -156,58 +140,5 @@ function set_aliases()
 
     send_command("alias stp_m11 input /sublimation")
     send_command("alias stp_m12 input /darkarts")
-    send_command("alias stp_m13 input /cure4 me")
-
-    send_command("alias stp_m14 input /valaineral")
-    send_command("alias stp_m15 input /zeid2")
-    send_command("alias stp_m16 input /shantotto2")
-    send_command("alias stp_m17 input /arciela2")
-    send_command("alias stp_m18 input /ulmia")
-    send_command("alias stp_m19 input /qultada")
-    send_command("alias stp_m20 input /pieujeuc")
-    send_command("alias stp_m21 input /elivira")
-
-    send_command("alias si input /sneak;wait 7;/invisible;")
-    send_command("alias warp input /equip R.ring \"Warp Ring\"; wait 8; input /item \"Warp Ring\" <me>;")
-    send_command("alias echad input /equip R.ring \"Echad Ring\"; wait 8; input /item \"Echad Ring\" <me>;")
-    send_command("alias empress input /equip R.ring \"Empress Ring\"; wait 8; input /item \"Empress Band\" <me>;")
-    send_command("alias trizek input /equip R.ring \"Trizek Ring\"; wait 8; input /item \"Trizek Ring\" <me>;")
-    
-end
-
-function set_trusts()
-    local current_zone = windower.ffxi.get_info().zone
-    local trusts = nil
-    if DYNAMIS:contains(current_zone) then
-        trusts = {
-            'NanaaMihgo',
-            'MihliAliapoh',
-            'Leonoyne',
-            'UkaTotlihn',
-            'Tenzen',
-            'Ulmia',
-            'PieujeUC',
-            'Kupipi',
-        }
-
-    else
-        trusts = {
-            'Valaineral',
-            'ExcenmilleS',
-            'Korumoru',
-            'ShantottoII',
-            'ZeidII',
-            'Qultada',
-            'PieujeUC',
-            'Kupipi',
-        }
-    end
-    send_command("alias stp_m14 input /" .. trusts[1])
-    send_command("alias stp_m15 input /" .. trusts[2])
-    send_command("alias stp_m16 input /" .. trusts[3])
-    send_command("alias stp_m17 input /" .. trusts[4])
-    send_command("alias stp_m18 input /" .. trusts[5])
-    send_command("alias stp_m19 input /" .. trusts[6])
-    send_command("alias stp_m20 input /" .. trusts[7])
-    send_command("alias stp_m21 input /" .. trusts[8])
+    send_command("alias stp_m13 taps cure")
 end

@@ -7,5 +7,10 @@
             <3>Cure III</3>
             <4>Cure IV</4>
         </cure>
+        <light>
+        	<1>LightArts</1>
+        	<2>AddendumWhite</2>
+        	<3>Penury</3>
+        </light>
     </global>
 </settings>

@@ -24,6 +24,7 @@
 --(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 --SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+require('logger')
 chat   = require('chat')
 config = require ('config')
 texts  = require('texts')
@@ -39,76 +40,111 @@ _addon.commands = {'taps'}
 
 defaults = T{}
 
-defaults.autocolor = true
+default_x = 500
+default_y = 500
 
-defaults.pos   = T{}
-defaults.pos.x = windower.get_windower_settings().x_res*2/3
-defaults.pos.y = windower.get_windower_settings().y_res-17
+defaults.inactive_text = {}
+defaults.inactive_text.bg = {alpha=0}
+defaults.inactive_text.text = {}
+defaults.inactive_text.text.size  = 12
+defaults.inactive_text.text.font  = 'Arial'
+defaults.inactive_text.text.alpha = 255
+defaults.inactive_text.text.red   = 255
+defaults.inactive_text.text.green = 255
+defaults.inactive_text.text.blue  = 255
+defaults.inactive_text.pos = {x=default_x, y=default_y}
 
-defaults.bg         = T{}
-defaults.bg.alpha   = 255
-defaults.bg.red     = 0
-defaults.bg.green   = 0
-defaults.bg.blue    = 0
-defaults.bg.visible = true
-
-defaults.flags        = {}
-defaults.flags.right  = false
-defaults.flags.bottom = false
-defaults.flags.bold   = false
-defaults.flags.italic = false
-
-defaults.inactive_text       = {}
-defaults.inactive_text.size  = 10
-defaults.inactive_text.font  = 'Courier New'
-defaults.inactive_text.alpha = 255
-defaults.inactive_text.red   = 255
-defaults.inactive_text.green = 255
-defaults.inactive_text.blue  = 255
-
-defaults.active_text       = {}
-defaults.active_text.size  = 10
-defaults.active_text.font  = 'Courier New'
-defaults.active_text.alpha = 255
-defaults.active_text.red   = 255
-defaults.active_text.green = 255
-defaults.active_text.blue  = 255
+defaults.active_text = {}
+defaults.active_text.bg = {alpha=0}
+defaults.active_text.text = {}
+defaults.active_text.text.size  = 12
+defaults.active_text.text.font  = 'Arial'
+defaults.active_text.text.alpha = 255
+defaults.active_text.text.red   = 255
+defaults.active_text.text.green = 255
+defaults.active_text.text.blue  = 255
+defaults.active_text.pos = {x=default_x, y=default_y}
 
 defaults.frames_per_tick = 30
-
+	
 default_tap_commands = T{}
 default_tap_commands.cure = T{'Cure', 'Cure II', 'Cure III', 'Cure IV'}
 
 -- [ Globals ] --
-frame_index     = 0
-tap_index       = 1
-pending_command = nil
+
+state = {frame_index=0, tap_index=1, tap_command={}, pending_command=nil}
+
+settings = config.load(defaults)
+
+tap_commands = config.load('data\\tap_commands.xml', default_tap_commands)
+
+
+
+
+inactive_text   = texts.new('${pending_command|---}', settings.inactive_text)
+active_text     = texts.new('${pending_command|---}', settings.active_text)
+inactive_text:show()
+
+-- [ Utilities ] --
+
+function update_text(active)
+	if active == true then
+		inactive_text:hide()
+		active_text:show()
+		active_text:update(state)
+	elseif active == false then
+		active_text:hide()
+		inactive_text:show()
+		inactive_text:update(state)
+	else
+		active_text:hide()
+		inactive_text:hide()
+	end
+end
+
+
+function save()
+	config.save(settings)
+	config.save(tap_commands)
+end
+
 
 -- [ Event Handlers ] --
-windower.register_event('addon command', function(command)
-	tap_command = T(tap_commands[command])
-	pending_command = tap_command[tap_index]
-	windower.add_to_chat(55, pending_command:color(1))
-	tap_index = math.max((tap_index + 1) % (tap_command:length() + 1), 1)
-	frame_index = 1
-end)
 
-windower.register_event('prerender', function()
-	frame_index = (frame_index + 1) % settings.frames_per_tick
-	if frame_index == 0 and pending_command then
-		windower.add_to_chat(55, pending_command:color(2))
-		pending_command = nil
-		tap_index = 1
+tap_commands:register(function(raw_tap_commands)
+	for key, value in pairs(raw_tap_commands) do
+		new_table = T{}	
+		for i, value in pairs(value) do
+			new_table[tonumber(i)] = value
+		end
+		raw_tap_commands[key] = new_table
+	end
+end)
+tap_commands:reload()
+
+
+windower.register_event('addon command', function(command)
+	if command == "#halt" then
+		state.pending_command = nil
+	elseif command == "#save" then
+		save()
+	else
+		state.tap_command = tap_commands[command]
+		state.pending_command = state.tap_command[state.tap_index]
+		update_text(false)
+		state.tap_index = math.max((state.tap_index + 1) % (state.tap_command:length() + 1), 1)
+		state.frame_index = 1
 	end
 end)
 
-
-windower.register_event('load', function(tap_command)
-	settings = config.load(defaults)
-	tap_commands = config.load('data\\tap_commands.xml', default_tap_commands)
+windower.register_event('prerender', function()
+	state.frame_index = (state.frame_index + 1) % settings.frames_per_tick
+	if state.frame_index == 0 and state.pending_command then
+		update_text(true)
+		windower.send_command("input /" .. tostring(state.pending_command))
+		state.pending_command = nil
+		state.tap_index = 1
+		coroutine.schedule(function() update_text() end, 3)
+	end
 end)
 
-windower.register_event('unload', function(tap_command)
-	config.save(settings)
-	config.save(tap_commands)
-end)

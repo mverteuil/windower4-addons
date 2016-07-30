@@ -7,9 +7,9 @@ from settings import search, zones
 
 
 def find_dat(dat_id):
-    key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, 'SOFTWARE\\PlayOnlineUS\\InstallFolder')
-    ffxi_path = winreg.QueryValueEx(key, '0001')[0]
-    key.Close()
+    with winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, 'SOFTWARE\\Wow6432Node\\PlayOnlineUS\\InstallFolder') as key:
+        ffxi_path = winreg.QueryValueEx(key, '0001')[0]
+    
     for i in range(1, 10):
         vtable = None
         if i == 1:

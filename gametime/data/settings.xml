@@ -24,22 +24,22 @@
                 <y>114</y>
             </pos>
             <Text>
-                <Font>Droid Sans Mono</Font>
+                <Font>Raleway Black</Font>
                 <Alpha>255</Alpha>
                 <Blue>250</Blue>
                 <Green>252</Green>
                 <Red>253</Red>
-                <Size>8</Size>
+                <Size>10</Size>
                 <Stroke>
-                    <Alpha>127</Alpha>
+                    <Alpha>0</Alpha>
                     <Blue>18</Blue>
                     <Green>97</Green>
                     <Red>136</Red>
-                    <Width>1.5</Width>
+                    <Width>0</Width>
                 </Stroke>
             </Text>
         </days>
-        <mode>4</mode>
+        <mode>10</mode>
         <moon>
             <change>true</change>
         </moon>
@@ -65,18 +65,18 @@
                 <y>129</y>
             </pos>
             <Text>
-                <Font>Droid Sans Mono</Font>
+                <Font>Raleway Light</Font>
                 <Alpha>255</Alpha>
-                <Blue>250</Blue>
-                <Green>252</Green>
-                <Red>253</Red>
-                <Size>8</Size>
+                <Blue>255</Blue>
+                <Green>255</Green>
+                <Red>255</Red>
+                <Size>14</Size>
                 <Stroke>
-                    <Alpha>127</Alpha>
-                    <Blue>18</Blue>
-                    <Green>97</Green>
-                    <Red>136</Red>
-                    <Width>1.5</Width>
+                    <Alpha>255</Alpha>
+                    <Blue>100</Blue>
+                    <Green>100</Green>
+                    <Red>100</Red>
+                    <Width>1</Width>
                 </Stroke>
             </Text>
         </time>

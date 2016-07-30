@@ -254,7 +254,7 @@ config.register(settings, function()
     end
     
 
-    gt.gtd:text('${day|} ${MoonPhase|Unknown} (${MoonPct|-}%); ${WeekReport|}')
+    gt.gtd:text('${day|} ${MoonPhase|Unknown} (${MoonPct|-}%)\n ${WeekReport|}')
     local info = windower.ffxi.get_info()
     if info.logged_in then
         day_change(info.day)

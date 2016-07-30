@@ -50,3 +50,4 @@ Temporary Items
 findAll/data/storages.json
 GearSwap/data/export/
 scoreboard/data/parses/sb_2016-jul-24-20-51-23.txt
+*.pyc

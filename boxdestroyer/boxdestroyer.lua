@@ -125,7 +125,6 @@ function check_incoming_chunk(id, original, modified, injected, blocked)
     local zone_id = windower.ffxi.get_info().zone
     if messages[zone_id] then
         if id == 0x0B then
-            windower.add_to_chat(207, 'box reset')
             box = {}
         elseif id == 0x2A then
             local box_id = original:unpack('I', 5)
@@ -133,7 +132,6 @@ function check_incoming_chunk(id, original, modified, injected, blocked)
             local param1 = original:unpack('I', 13)
             local param2 = original:unpack('I', 17)
             local message_id = original:unpack('H', 27) % 0x8000
-            windower.add_to_chat(207, 'box %d %d %d %d':format(box_id, param0, param1, param2))
             if messages[zone_id].greater_less == message_id then
                 box[box_id] = greater_less(box_id, param1 == 0, param0)
             elseif messages[zone_id].second_even_odd == message_id then

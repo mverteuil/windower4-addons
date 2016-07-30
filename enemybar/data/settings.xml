@@ -1,11 +1,11 @@
 <?xml version="1.1" ?>
 <settings>
     <global>
-        <font>Droid Sans Mono<</font>
-        <font_size>14</font_size>
+        <font>Raleway SemiBold</font>
+        <font_size>20</font_size>
         <pos>
             <x>400</x>
-            <y>50</y>
+            <y>150</y>
         </pos>
     </global>
 </settings>

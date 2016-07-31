@@ -1,7 +1,5 @@
 --[[ Kensai - Red Mage ]]--
 
-require('libs/kensai-globals')
-
 --[[ Trusts for Strix Macros ]]--
 
 TRUSTS = {
@@ -15,92 +13,59 @@ TRUSTS = {
     'Kupipi',
 }
 
-ALWAYS_BUFF = {}
-ALWAYS_BUFF[419] = "Composure"
-ALWAYS_BUFF[33] = "Haste II"
-ALWAYS_BUFF[43] = "Refresh II"
-ALWAYS_BUFF[432] = "Temper"
-
-
---[[ Utilities ]]--
-
-local function to_windower_api(str)
-    return str:lower():gsub(" ","_")
-end
-
-
---[[ GearSwap Defined Callbacks ]]--
-
--- Called once on load to initialize `sets`
 function get_sets()
-    set_language("english")
+    --[[
+        common-mage-gear.lua
+        This file will contain the default gear for the three mage types blm, sch, geo
+        After the init function, you can override gear based on your job.
+        This must be called first or it might override other gear you might declare.
+        
+        Additionally, after you have overridden gear, you must call the build_default_sets function to build the casting sets.
+    --]]
+    require('lib/common-mage-gear.lua')
+    init_mage_gear()
+    
+    -- Gear Overrides
+    --[[
+        There are 3 ways to override gear
+        1. change equipment one piece at a time
+            sets.MND.head = "Gende. Caubeen"
+        2. use the set_combine function to one or more pieces of gear
+            sets.FC  = set_combine(sets.FC, { ammo = "Incantor Stone", hands = "Gendewitha Gages" })
+        3. completely override the set with a new one
+            sets.MaxCastReduction = { waist = "Goading Belt", legs = hagpantsacc, feet = "Hagondes Sabots" }
+    --]]
 
+    sets.Idle.main = "Iztaasu +2"
+    sets.Idle.sub = "Ice Shield"
+    sets.Engaged.Melee.main = "Iztaasu +2"
+    sets.Engaged.Melee.sub = "Ice Shield"
+
+    -- Build Default Sets
+    build_default_sets()
+    
+    -- Include Spell Maps and Mage Functions
+    require('lib/spell-map.lua')
+    require('lib/mage-function.lua')
+    require('lib/kensai-globals.lua')
+
+    -- Get Kensai Common Sets
     set_common_sets()
-    
-    --{{ Idle Gear }}--
-    sets.Idle = {
-        main="Iztaasu +2", sub="Ice Shield", ammo="Morion Tathlum",
-        head="Hagondes Hat +1", neck="Incanter's Torque", left_ear={ name="Moonshade Earring", augments={'Attack+4','Latent effect: "Regain"+1',}}, right_ear="Giant's Earring",
-        body="Orvail Robe +1", hands="Yaoyotl Gloves", left_ring="Rajas Ring", right_ring="Weather. Ring",
-        back="Buquwik Cape", waist="Salire Belt", legs="Wayfarer Slops", feet="Kandza Crackows",
-    }
-    
-    sets.Engaged ={
-        main="Iztaasu +2", sub="Ice Shield", ammo="Morion Tathlum",
-        head="Hagondes Hat +1", neck="Incanter's Torque", left_ear={ name="Moonshade Earring", augments={'Attack+4','Latent effect: "Regain"+1',}}, right_ear="Giant's Earring",
-        body="Wayfarer Robe", hands="Yaoyotl Gloves", left_ring="Rajas Ring", right_ring="Weather. Ring",
-        back="Buquwik Cape", waist="Salire Belt", legs="Wayfarer Slops", feet="Kandza Crackows",
-    }
 
-    sets.Casting = set_combine(sets.Engaged, {
-        neck="Incanter's Torque"
-    })
-
-    sets.Spells = {}
-    sets.Spells.Cure = {main='Tamaxchi', back="Pahtli Cape", }
-
-    set_global_aliases()
-    set_aliases()
-    set_trusts()
+    alias_element_match()
+    alias_kensai_globals()
 end
 
 
-
-function precast(spell)
-    if spell.type:endswith('Magic') then
-        new_set = sets.Casting
-        -- Spell Species
-        if spell.name:startswith('Cure') then
-            new_set = set_combine(new_set, sets.Spells.Cure)
-        end
-        equip(new_set)
-    end
-end
-
-function midcast(spell)
-    
-end
-
-function aftercast(spell)
-    for buff_id, re_buff in pairs(ALWAYS_BUFF) do
-        if not buffactive[tonumber(buff_id)] then
-            send_command("wait 4; input /ma " .. re_buff .. " <me>;")
-            break
-        end
-    end
-end
-
-function status_change(new, old)
-   equip(sets[new]) 
-end
-
-function self_command(command)
-    if command == 'lock' then
+function job_self_command(commandParams, eventArgs)
+    if commandParams[1] == 'lock' then
         disable('main', 'sub', 'ammo', 'range')
         add_to_chat(3, 'Locked main/sub/ammo/range')
-    elseif command == 'unlock' then
+        eventArgs.handled = true
+    elseif commandParams[1] == 'unlock' then
         enable('main', 'sub', 'ammo', 'range')
         add_to_chat(4, 'Unlocked main/sub/ammo/range')
+        eventArgs.handled = true
     end
 end
 

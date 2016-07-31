@@ -1,8 +1,6 @@
 --[ Original Sauce: http://pastebin.com/raw/CL3MrE0z ]--
 
 function get_sets()
-	
-
 	--[[
 		common-mage-gear.lua
 		This file will contain the default gear for the three mage types blm, sch, geo
@@ -11,7 +9,7 @@ function get_sets()
 		
 		Additionally, after you have overridden gear, you must call the build_default_sets function to build the casting sets.
 	--]]
-	include('libs/common-mage-gear.lua')
+	require('lib/common-mage-gear.lua')
 	init_mage_gear()
 	
 	-- Gear Overrides
@@ -20,39 +18,39 @@ function get_sets()
 		1. change equipment one piece at a time
 			sets.MND.head = "Gende. Caubeen"
 		2. use the set_combine function to one or more pieces of gear
-			sets.FC  = set_combine(sets.FC, {	ammo = "Incantor Stone", hands = "Gendewitha Gages"	})
+			sets.FC  = set_combine(sets.FC, { ammo = "Incantor Stone", hands = "Gendewitha Gages" })
 		3. completely override the set with a new one
-			sets.MaxCastReduction = {	waist = "Goading Belt", legs = hagpantsacc, feet = "Hagondes Sabots"	}
+			sets.MaxCastReduction = { waist = "Goading Belt", legs = hagpantsacc, feet = "Hagondes Sabots" }
 	--]]
-	sets.MND.head = "Gende. Caubeen"
-	
-	sets.Matk.feet = "Gende. Galoshes"
-	
-	sets.CurePotency.head = "Gende. Caubeen"
-	
-	sets.FC  = set_combine(sets.FC, {	ammo = "Incantor Stone", hands = "Gendewitha Gages"	})
-	
-	sets.MaxCastReduction = {	waist = "Goading Belt", legs = hagpantsacc, feet = "Hagondes Sabots"	}
-	
-	sets.Skill.EnhancingMagic.head = "Svnt. Bonnet +2"
-	
-	sets.Enhance.Regen.head = "Svnt. Bonnet +2"
+	--sets.MND.head = "Gende. Caubeen"
+	--
+	--sets.Matk.feet = "Gende. Galoshes"
+	--
+	--sets.CurePotency.head = "Gende. Caubeen"
+	--
+	--sets.FC  = set_combine(sets.FC, { ammo = "Incantor Stone", hands = "Gendewitha Gages" })
+	--
+	--sets.MaxCastReduction = { waist = "Goading Belt", legs = hagpantsacc, feet = "Hagondes Sabots" }
+	--
+	--sets.Skill.EnhancingMagic.head = "Svnt. Bonnet +2"
+	--
+	--sets.Enhance.Regen.head = "Svnt. Bonnet +2"
 
 	-- Additional Gear
-	sets.Sublimation = {	ear2 = "Savant's Earring"	}
+	--sets.Sublimation = { ear2 = "Savant's Earring" }
 	
 	sets.Grimoire = {}
 	sets.Grimoire.CastTime = {} -- Add Academic's Loafers when obtained
-	sets.Grimoire['Light Arts'] = {	legs = "Scholar's Pants" }
+	sets.Grimoire['Light Arts'] = {}-- legs = "Scholar's Pants" }
 	sets.Grimoire['Dark Arts'] = {} -- Add Scholar's Gown when obtained
 	sets.Grimoire.Macc = {} -- Savant's Pants +2
 	sets.Grimoire.Celerity = {} -- Add Argute Loafers when obtained
 	sets.Grimoire.Alacrity = sets.Grimoire.Celerity
-	sets.Grimoire.Perpetuance = { hands = "Svnt. Bracers +2" }
+	sets.Grimoire.Perpetuance = {}-- hands = "Svnt. Bracers +2" }
 	sets.Grimoire.Immanence = sets.Grimoire.Perpetuance
 	sets.Grimoire.Penury = {} -- Add Savant's Pants when obtained
 	sets.Grimoire.Parsimony = sets.Grimoire.Penury
-	sets.Grimoire.Rapture = { head = "Svnt. Bonnet +2" }
+	sets.Grimoire.Rapture = {}-- head = "Svnt. Bonnet +2" }
 	sets.Grimoire.Ebullience = sets.Grimoire.Rapture
 	sets.Grimoire.Klimaform = {} -- Add Savant's Loafers when obtained
 	
@@ -60,11 +58,15 @@ function get_sets()
 	build_default_sets()
 	
 	-- Include Spell Maps and Mage Functions
-	include('libs/spell-map.lua')
-	include('libs/mage-function.lua')
-	include('libs/scholar-function.lua')
+	require('lib/spell-map.lua')
+	require('lib/mage-function.lua')
+	require('lib/scholar-function.lua')
+	require('lib/kensai-globals.lua')
+
+	-- Get Kensai Common Sets
+	set_common_sets()
 
 	alias_element_match()
 	alias_strategems()
-	
+	alias_kensai_globals()
 end

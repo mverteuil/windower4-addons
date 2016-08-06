@@ -210,10 +210,7 @@ function self_command(command)
 	local eventArgs = {	handled = false	}
 	
 	if job_self_command then
-		print('found')
 		job_self_command(commandParams, eventArgs)
-	else
-		print('not found')
 	end
 	
 	if eventArgs.handled then return end

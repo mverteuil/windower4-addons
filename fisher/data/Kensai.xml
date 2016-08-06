@@ -9,10 +9,10 @@
             <release>1</release>
         </delay>
         <didnotcatchmax>500</didnotcatchmax>
-        <equip>false</equip>
+        <equip>true</equip>
         <fatigue>
-            <date>2016-07-31</date>
-            <remaining>196</remaining>
+            <date>2016-08-06</date>
+            <remaining>0</remaining>
         </fatigue>
         <fish>
             <13107215>4500</13107215>
@@ -36,6 +36,7 @@
             <30146570>4483</30146570>
             <31457282>90</31457282>
             <31457283>624</31457283>
+            <31457287>4472</31457287>
             <31457289>4429</31457289>
             <32768009>5812</32768009>
             <34078722>14117</34078722>
@@ -62,7 +63,7 @@
             <49807372>4470</49807372>
             <51118083>14117</51118083>
         </fish>
-        <log>-1</log>
+        <log>3</log>
         <move>true</move>
         <random>true</random>
         <senses>true</senses>

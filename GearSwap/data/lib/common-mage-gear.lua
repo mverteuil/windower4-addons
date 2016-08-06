@@ -31,15 +31,15 @@ function init_mage_gear()
 	sets.Staves.Cure = { main="Tamaxchi Staff" }
 		
 	-- Obi Declarations
-	sets.Obis = {}-- back="Twilight Cape" }
-	sets.Obis.Fire = {}-- waist="Karin Obi" }
-	sets.Obis.Earth = {}-- waist="Dorin Obi" }
-	sets.Obis.Water = {}-- waist="Suirin Obi" }
-	sets.Obis.Wind = {}-- waist="Furin Obi" }
-	sets.Obis.Ice = {}-- waist="Hyorin Obi" }
-	sets.Obis.Thunder = {}-- waist="Rairin Obi" }
-	sets.Obis.Light = {}-- waist="Korin Obi" }
-	sets.Obis.Dark = {}-- waist="Anrin Obi" }
+	sets.Obis = { back="Twilight Cape" }
+	sets.Obis.Fire = { waist="Karin Obi" }
+	sets.Obis.Earth = { waist="Dorin Obi" }
+	sets.Obis.Water = { waist="Suirin Obi" }
+	sets.Obis.Wind = { waist="Furin Obi" }
+	sets.Obis.Ice = { waist="Hyorin Obi" }
+	sets.Obis.Thunder = { waist="Rairin Obi" }
+	sets.Obis.Light = { waist="Korin Obi" }
+	sets.Obis.Dark = { waist="Anrin Obi" }
 	
 	-- Augmented Gear
 	MoonshadeEarring = {name="Moonshade Earring", augments={'Attack+4','Latent effect: "Regain"+1'}}		
@@ -239,7 +239,7 @@ function build_default_sets()
 	-- Idle Sets
 	sets.Idle.Default = set_combine(sets.ElementalMagic.Damage, sets.MDT, sets.PDT, sets.Refresh)
 	
-	sets.Engaged.Melee = set_combine(sets.Haste, { main="Eminent Dagger", ear1="Bladeborn Earring", ear2=MoonshadeEarring, ring1="Rajas Ring", ring2="Sun Ring", back="Buquwik Cape" })
+	sets.Engaged.Melee = set_combine(sets.Haste, { main="Eminent Staff", ear1="Bladeborn Earring", ear2=MoonshadeEarring, ring1="Rajas Ring", ring2="Sun Ring", back="Buquwik Cape" })
 	sets.Engaged.Caster = sets.Idle.Default
 	
 	sets.Resting.Default = sets.HMP

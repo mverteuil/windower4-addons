@@ -17,7 +17,6 @@ end
 --[ Additional Event Handlers ]--
 
 windower.register_event('zone change', function (new_id, old_id)
-    add_to_chat(22,'zone')
     -- Build movement set by area
     if ADOULIN:contains(new_id) then
         movement_set = set_combine(sets.Idle, sets.movement.adoulin)

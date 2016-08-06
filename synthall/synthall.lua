@@ -24,18 +24,18 @@ _addon.author = 'Seth VanHeulen (Acacia@Odin)'
 
 require('pack')
 
-yes = '\31\204yes\30\1'
-no = '\31\167no\30\1'
-on = '\31\204on\30\1'
-off = '\31\167off\30\1'
-results = {[0] = '\31\200success\30\1', [1] = '\31\167break\30\1', [2] = '\31\204high quality\30\1'}
+yes = '\31\204YES\30\1'
+no = '\31\167NO\30\1'
+on = '\31\204ON\30\1'
+off = '\31\167OFF\30\1'
+results = {[0] = '\31\200Success\30\1', [1] = '\31\167Failure\30\1', [2] = '\31\204High Quality\30\1'}
 
 enabled = false
 support = true
 food = true
 
 function show_status()
-    windower.add_to_chat(207, '---- synthall enabled: %s, support: %s, food: %s ----':format(enabled and yes or no, support and on or off, food and on or off))
+    windower.add_to_chat(207, '{ Automate: %s, Support: %s, Food: %s }':format(enabled and yes or no, support and on or off, food and on or off))
 end
 
 -- event callback functions
@@ -58,15 +58,10 @@ function check_incoming_text(original, modified, original_mode, modified_mode)
 end
 
 function check_incoming_chunk(id, original, modified, injected, blocked)
-    if id == 0x30 then
-        local id, index, element, result = original:unpack('IHHC', 5)
-        if id == windower.ffxi.get_player().id then
-            windower.add_to_chat(207, '---- %s ----':format(results[result]))
-        end
-    elseif id == 0x6F then
+    if id == 0x6F then
         local hq = original:unpack('c', 6)
         if hq > 0 then
-            windower.add_to_chat(207, '---- \31\204hq%s\30\1 ----':format(hq))
+            windower.add_to_chat(207, '>>> \31\204HQ%s\30\1':format(hq))
         end
         if enabled then
             windower.send_command('wait 3.5; input /lastsynth')

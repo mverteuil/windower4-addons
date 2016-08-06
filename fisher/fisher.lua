@@ -41,8 +41,8 @@ defaults.equip = false
 defaults.move = false
 defaults.senses = true
 defaults.delay = {}
-defaults.delay.release = 1
-defaults.delay.cast = 4
+defaults.delay.release = 2
+defaults.delay.cast = 7
 defaults.delay.equip = 2
 defaults.delay.move = 2
 defaults.fatigue = {}
@@ -56,6 +56,12 @@ defaults.fish = {}
 fish = T{}
 bait = S{}
 stats = {casts=0, bites=0, catches=0, didnotcatchcount=0}
+
+inventory = 0
+wardrobe = 9
+wardrobe2 = 10
+wardrobe3 = 11
+wardrobe4 = 12
 
 running = false
 log_file = nil
@@ -104,12 +110,21 @@ function check_rod()
     if items.equipment.range == 0 then
         message(3, 'item slot: 0')
         return true
-    elseif items.equipment.range_bag == 0 then
+    elseif items.equipment.range_bag == inventory then
         message(3, 'inventory slot: %d, id: %d':format(items.equipment.range, items.inventory[items.equipment.range].id))
         return res.items[items.inventory[items.equipment.range].id].skill ~= 48
-    else
+    elseif items.equipment.range_bag == wardrobe then
         message(3, 'wardrobe slot: %d, id: %d':format(items.equipment.range, items.wardrobe[items.equipment.range].id))
         return res.items[items.wardrobe[items.equipment.range].id].skill ~= 48
+    elseif items.equipment.range_bag == wardrobe2 then
+        message(3, 'wardrobe2 slot: %d, id: %d':format(items.equipment.range, items.wardrobe2[items.equipment.range].id))
+        return res.items[items.wardrobe2[items.equipment.range].id].skill ~= 48
+    elseif items.equipment.range_bag == wardrobe3 then
+        message(3, 'wardrobe3 slot: %d, id: %d':format(items.equipment.range, items.wardrobe3[items.equipment.range].id))
+        return res.items[items.wardrobe3[items.equipment.range].id].skill ~= 48
+    elseif items.equipment.range_bag == wardrobe4 then
+        message(3, 'wardrobe4 slot: %d, id: %d':format(items.equipment.range, items.wardrobe4[items.equipment.range].id))
+        return res.items[items.wardrobe4[items.equipment.range].id].skill ~= 48
     end
 end
 
@@ -119,12 +134,21 @@ function check_bait()
     if items.equipment.ammo == 0 then
         message(3, 'item slot: 0')
         return false
-    elseif items.equipment.ammo_bag == 0 then
+    elseif items.equipment.ammo_bag == inventory then
         message(3, 'inventory slot: %d, id: %d':format(items.equipment.ammo, items.inventory[items.equipment.ammo].id))
         return bait:contains(items.inventory[items.equipment.ammo].id)
-    else
+    elseif items.equipment.ammo_bag == wardrobe then
         message(3, 'wardrobe slot: %d, id: %d':format(items.equipment.ammo, items.wardrobe[items.equipment.ammo].id))
         return bait:contains(items.wardrobe[items.equipment.ammo].id)
+    elseif items.equipment.ammo_bag == wardrobe2 then
+        message(3, 'wardrobe2 slot: %d, id: %d':format(items.equipment.ammo, items.wardrobe2[items.equipment.ammo].id))
+        return bait:contains(items.wardrobe2[items.equipment.ammo].id)
+    elseif items.equipment.ammo_bag == wardrobe3 then
+        message(3, 'wardrobe3 slot: %d, id: %d':format(items.equipment.ammo, items.wardrobe3[items.equipment.ammo].id))
+        return bait:contains(items.wardrobe3[items.equipment.ammo].id)
+    elseif items.equipment.ammo_bag == wardrobe4 then
+        message(3, 'wardrobe4 slot: %d, id: %d':format(items.equipment.ammo, items.wardrobe4[items.equipment.ammo].id))
+        return bait:contains(items.wardrobe4[items.equipment.ammo].id)
     end
 end
 
@@ -437,7 +461,7 @@ function check_incoming_chunk(id, original, modified, injected, blocked)
                 stats.bites = stats.bites + 1
                 message(2, 'catching fish when low on time')
             else
-				local releasedelay = settings.delay.release + (settings.random and math.random() or 0.0)
+				local releasedelay = settings.delay.release + (settings.random and math.random()*2 or 0.0)
 				message(2, 'releasing fish in %.2f seconds':format(releasedelay))
 				windower.send_command('wait %.2f; lua i fisher release %d':format(releasedelay, stats.casts))
             end
@@ -465,7 +489,7 @@ function check_incoming_chunk(id, original, modified, injected, blocked)
                 error_retry = true
             elseif new_status == 0 and old_status ~= 0 then
                 message(3, 'status changed to idle')
-				local castdelay = settings.delay.cast + (settings.random and math.random() or 0.0)
+				local castdelay = settings.delay.cast + (settings.random and math.random()*4 or 0.0)
 				message(2, 'casting in %.2f seconds':format(castdelay))
 				windower.send_command('wait %.2f; lua i fisher cast':format(castdelay))
             end

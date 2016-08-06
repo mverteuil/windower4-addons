@@ -61,6 +61,9 @@ function get_sets()
 	require('lib/spell-map.lua')
 	require('lib/mage-function.lua')
 	require('lib/scholar-function.lua')
+	require('lib/common_info.skillchain.lua')
+	require('lib/scholar-solosc.lua')
+	require('lib/caster-buffwatcher.lua')
 	require('lib/kensai-globals.lua')
 
 	-- Get Kensai Common Sets
@@ -69,4 +72,22 @@ function get_sets()
 	alias_element_match()
 	alias_strategems()
 	alias_kensai_globals()
+end
+
+function job_self_command(commandParams, eventArgs)
+	if commandParams[1] == 'buffWatcher' then
+		buffWatch(commandParams[2])
+	end
+	if commandParams[1] == 'stopBuffWatcher' then
+		stopBuffWatcher()
+	end
+	if commandParams[1] == 'soloSC' then
+		print('hi there!')
+		if not commandParams[2] or not commandParams[3] then
+			errlog('missing required parameters for function soloSkillchain')
+			return
+		else
+			soloSkillchain(commandParams[2],commandParams[3],commandParams[4],commandParams[5])
+		end
+	end	
 end

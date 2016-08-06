@@ -21,10 +21,10 @@ function get_sets()
         This must be called first or it might override other gear you might declare.
         
         Additionally, after you have overridden gear, you must call the build_default_sets function to build the casting sets.
-    --]]
-    require('lib/common-mage-gear.lua')
-    init_mage_gear()
-    
+        --]]
+        require('lib/common-mage-gear.lua')
+        init_mage_gear()
+        
     -- Gear Overrides
     --[[
         There are 3 ways to override gear
@@ -34,12 +34,13 @@ function get_sets()
             sets.FC  = set_combine(sets.FC, { ammo = "Incantor Stone", hands = "Gendewitha Gages" })
         3. completely override the set with a new one
             sets.MaxCastReduction = { waist = "Goading Belt", legs = hagpantsacc, feet = "Hagondes Sabots" }
-    --]]
+            --]]
 
     sets.Idle.main = "Iztaasu +2"
     sets.Idle.sub = "Ice Shield"
     sets.Engaged.Melee.main = "Iztaasu +2"
     sets.Engaged.Melee.sub = "Ice Shield"
+    sets.Engaged = sets.Engaged.Melee
 
     -- Build Default Sets
     build_default_sets()
@@ -54,17 +55,26 @@ function get_sets()
 
     alias_element_match()
     alias_kensai_globals()
+    set_aliases()
 end
 
 
 function job_self_command(commandParams, eventArgs)
-    if commandParams[1] == 'lock' then
+    if commandParams[1] == 'lock' and #commandParams == 1 then
         disable('main', 'sub', 'ammo', 'range')
         add_to_chat(3, 'Locked main/sub/ammo/range')
         eventArgs.handled = true
-    elseif commandParams[1] == 'unlock' then
+    elseif commandParams[1] == 'lock' and #commandParams == 2 then
+        disable(commandParams[2])
+        add_to_chat(3, 'Locked ' .. commandParams[2])
+        eventArgs.handled = true
+    elseif commandParams[1] == 'unlock' and #commandParams == 1 then
         enable('main', 'sub', 'ammo', 'range')
         add_to_chat(4, 'Unlocked main/sub/ammo/range')
+        eventArgs.handled = true
+    elseif commandParams[1] == 'unlock' and #commandParams == 2 then
+        enable(commandParams[2])
+        add_to_chat(3, 'Unlocked ' .. commandParams[2])
         eventArgs.handled = true
     end
 end

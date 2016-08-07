@@ -4,9 +4,6 @@
         <Auto>false</Auto>
         <Range>10</Range>
     </global>
-    <kensai>
-        <Auto>true</Auto>
-    </kensai>
     <lygre>
         <Auto>true</Auto>
     </lygre>

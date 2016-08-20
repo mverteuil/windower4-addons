@@ -45,20 +45,19 @@ strategems = {}
 strategems.alias_list = T{	'addend', 'cost', 'speed', 'aoe', 'power', 'duration', 'skillchain', 'accuracy', 'enmity'	}
 strategems['Light Arts'] = {	addend = 'Addendum: White', cost = 'Penury', speed = 'Celerity', aoe = 'Accession', power = 'Rapture', duration = 'Perpetuance', accuracy = 'Altruism', enmity = 'Tranquility'	}
 strategems['Dark Arts'] = {	addend = 'Addendum: Black', cost = 'Parsimony', speed = 'Alacrity', aoe = 'Manifestation', power = 'Ebullience', skillchain = 'Immanence', accuracy = 'Focalization', enmity = 'Equanimity'	}
-strategems.affected = {
-	ElementalMagic = {	'Parsimony', 'Alacrity', 'Ebullience', 'Immanence', 'Focalization', 'Equanimity'	},
-	DarkMagic = {	'Parsimony', 'Alacrity', 'Ebullience', 'Immanence', 'Focalization', 'Eqanimity'	},
-	EnhancingMagic = {	'Penury', 'Celerity', 'Accession', 'Perpetuance'	},
-	EnfeeblingMagic = {	'Parsimony', 'Alacrity', 'Manifestation', 'Focalization'	},
-	HealingMagic = {	'Penury', 'Celerity', 'Accession', 'Rapture', 'Tranquility'	},
-	DivineMagic = {	'Penury', 'Celerity', 'Accession', 'Rapture', 'Tranquility'	}
-}
+strategems.affected = {}
+strategems.affected['Elemental Magic'] = {	'Parsimony', 'Alacrity', 'Ebullience', 'Immanence', 'Focalization', 'Equanimity'	}
+strategems.affected['Dark Magic'] = {	'Parsimony', 'Alacrity', 'Ebullience', 'Immanence', 'Focalization', 'Eqanimity'	}
+strategems.affected['Enhancing Magic'] = {	'Penury', 'Celerity', 'Accession', 'Perpetuance'	}
+strategems.affected['Enfeebling Magic'] = {	'Parsimony', 'Alacrity', 'Manifestation', 'Focalizatin'	}
+strategems.affected['Healing Magic'] = {	'Penury', 'Celerity', 'Accession', 'Rapture', 'Tranquility'	}
+strategems.affected['Divine Magic'] = {	'Penury', 'Celerity', 'Accession', 'Rapture', 'Tranquility'	}
+
 
 addendum_spells = {}
-addendum_spells['Light Arts'] = S{	'Paralyna', 'Blindna', 'Stona', 'Viruna', 'Cursna', 'Erase', 'Poisona', 'Silena', 'Reraise II', 'Reraise III'	}
-addendum_spells['Dark Arts'] = S{	'Fire IV', 'Fire V', 'Stone IV', 'Stone V', 'Water IV', 'Water V', 'Aero IV', 'Aero V', 'Blizzard IV', 'Blizzard V', 'Thunder IV', 'Thunder V',
-	'Break', 'Dispel'	}
-addendum_spells['RDM'] = S{	'Dispel'	}
-addendum_spells['WHM'] = S{	'Paralyna', 'Blindna', 'Stona', 'Viruna', 'Cursna', 'Erase', 'Poisona', 'Silena'	}
+addendum_spells['Light Arts'] = S{'Paralyna', 'Blindna', 'Stona', 'Viruna', 'Cursna', 'Erase', 'Poisona', 'Silena', 'Reraise II', 'Reraise III'	}
+addendum_spells['Dark Arts'] = S{'Fire IV', 'Fire V', 'Stone IV', 'Stone V', 'Water IV', 'Water V', 'Aero IV', 'Aero V', 'Blizzard IV', 'Blizzard V', 'Thunder IV', 'Thunder V', 'Break', 'Dispel' }
+addendum_spells['RDM'] = S{	'Dispel' }
+addendum_spells['WHM'] = S{	'Paralyna', 'Blindna', 'Stona', 'Viruna', 'Cursna', 'Erase', 'Poisona', 'Silena' }
 addendum_spells.tried_addend = false
 addendum_spells.tried_enlighten = false

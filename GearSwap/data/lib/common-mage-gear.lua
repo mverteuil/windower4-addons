@@ -28,7 +28,7 @@ function init_mage_gear()
 	sets.Staves.Accuracy = { main="Eminent Staff" }
 	sets.Staves.CastTime = { main="Eminent Staff" }
 	
-	sets.Staves.Cure = { main="Tamaxchi Staff" }
+	sets.Staves.Cure = { main="Tamaxchi" }
 		
 	-- Obi Declarations
 	sets.Obis = { back="Twilight Cape" }
@@ -69,29 +69,29 @@ function init_mage_gear()
 	sets.CurePotency = set_combine(sets.Staves.Cure, { body="Wayfarer Robe", hands="Yaoyotl Gloves", back="Pahtli Cape", legs="Wayfarer Slops", feet="Kandza Crackows" })
 	
 	sets.FC = set_combine(sets.Staves.CastTime, { sub="Vivid Strap", ring2="Weatherspoon Ring", legs="Orvail Pants +1", feet="Chelona Boots" })
-	sets.FC.ElementalMagic = { neck="Incanter's Torque" }
-	sets.FC.ElementalMagic.Impact = {}-- head="", body="Twilight Cloak" }
-	sets.FC.HealingMagic = {}
-	sets.FC.HealingMagic.Cure = { back="Pahtli Cape" }
-	sets.FC.EnhancingMagic = {}-- waist="Siegel Sash" }
-	sets.FC.EnhancingMagic.Stoneskin = {}-- hands="Carapacho Mitts" }
+	sets.FC['Elemental Magic'] = { neck="Incanter's Torque" }
+	sets.FC['Elemental Magic'].Impact = {}-- head="", body="Twilight Cloak" }
+	sets.FC['Healing Magic'] = {}
+	sets.FC['Healing Magic'].Cure = { back="Pahtli Cape" }
+	sets.FC['Enhancing Magic'] = {}-- waist="Siegel Sash" }
+	sets.FC['Enhancing Magic'].Stoneskin = {}-- hands="Carapacho Mitts" }
 	
 	sets.MaxCastReduction = {}-- hands="Hagondes Cuffs", waist="Goading Belt", legs="Hagondes Pants", feet="Hagondes Sabots" }
 	
 	sets.Skill = {}
-	sets.Skill.ElementalMagic = {}
-	sets.Skill.DarkMagic = {}-- sub="Caecus Grip" }
-	sets.Skill.HealingMagic = {}-- ring2 = "Sirona's Ring"}
-	sets.Skill.EnhancingMagic = {}-- sub="Fulcio Grip", body="Anhur Robe", waist="Olympus Sash" }
-	sets.Skill.EnfeeblingMagic = {}-- sub="Macero Grip" }
-	sets.Skill.DivineMagic = {}-- sub="Divinus Grip" }
+	sets.Skill['Elemental Magic'] = {}
+	sets.Skill['Dark Magic'] = {}-- sub="Caecus Grip" }
+	sets.Skill['Healing Magic'] = {}-- ring2 = "Sirona's Ring"}
+	sets.Skill['Enhancing Magic'] = {}-- sub="Fulcio Grip", body="Anhur Robe", waist="Olympus Sash" }
+	sets.Skill['Enfeebling Magic'] = {}-- sub="Macero Grip" }
+	sets.Skill['Divine Magic'] = {}-- sub="Divinus Grip" }
 	sets.Skill.Geomancy = {}
 	sets.Skill.Ninjutsu = {}
 	sets.Skill.Geomancy = {}
 	
 	sets.Enhance = {}
 	
-	sets.Enhance.Drain = sets.Staves.DarkMagic
+	sets.Enhance.Drain = sets.Staves['Dark Magic']
 	sets.Enhance.Stoneskin = {}-- waist="Siegel Sash" }
 	sets.Enhance.Cursna = {}
 	sets.Enhance.Regen = {}
@@ -104,52 +104,52 @@ function init_mage_gear()
 	--]]
 	
 	-- handled_magic is to let gearswap know which magic "skills" are handled by the set building code
-	handled_magic = S{ 'ElementalMagic', 'DarkMagic', 'HealingMagic', 'EnhancingMagic', 'EnfeeblingMagic', 'DivineMagic', 'Geomancy', 'Ninjutsu' }
+	handled_magic = S{ 'Elemental Magic', 'Dark Magic', 'Healing Magic', 'Enhancing Magic', 'Enfeebling Magic', 'Divine Magic', 'Geomancy', 'Ninjutsu' }
 	
 	-- Define Base magic skill based sets
-	sets.ElementalMagic = {}
-	sets.DarkMagic = {}
-	sets.HealingMagic = {}
-	sets.EnhancingMagic = {}
-	sets.EnfeeblingMagic = {}
-	sets.DivineMagic = {}
+	sets['Elemental Magic'] = {}
+	sets['Dark Magic'] = {}
+	sets['Healing Magic'] = {}
+	sets['Enhancing Magic'] = {}
+	sets['Enfeebling Magic'] = {}
+	sets['Divine Magic'] = {}
 	sets.Geomancy = {}
 	sets.Ninjutsu = {}
 	
 	-- Elemental Magic Sets
-	sets.ElementalMagic.Damage = {}
-	sets.ElementalMagic.Helix = {}
-	sets.ElementalMagic.Debuff = {}
-	sets.ElementalMagic.Impact = {}
+	sets['Elemental Magic'].Damage = {}
+	sets['Elemental Magic'].Helix = {}
+	sets['Elemental Magic'].Debuff = {}
+	sets['Elemental Magic'].Impact = {}
 	
-	sets.ElementalMagic.Earth = {}-- neck="Quanpur Necklace" } -- Declaration is ok for this piece
+	sets['Elemental Magic'].Earth = {}-- neck="Quanpur Necklace" } -- Declaration is ok for this piece
 	
 	-- Dark Magic Sets
-	sets.DarkMagic.Damage = {} -- Drain and Aspir set
-	sets.DarkMagic.Stun = {}
-	sets.DarkMagic.Bio = {}
-	sets.DarkMagic.Absorb = {}
+	sets['Dark Magic'].Damage = {} -- Drain and Aspir set
+	sets['Dark Magic'].Stun = {}
+	sets['Dark Magic'].Bio = {}
+	sets['Dark Magic'].Absorb = {}
 	
 	-- Healing Magic Sets
-	sets.HealingMagic.Cursna = {}
-	sets.HealingMagic.Cure = {}
-	sets.HealingMagic.StatusRemoval = {}
+	sets['Healing Magic'].Cursna = {}
+	sets['Healing Magic'].Cure = {}
+	sets['Healing Magic'].StatusRemoval = {}
 	
 	-- Enhancing Magic Sets
-	sets.EnhancingMagic.Regen = {}
-	sets.EnhancingMagic.Phalanx = {}
-	sets.EnhancingMagic.BarSpell = {}
-	sets.EnhancingMagic.GainSpell = {}
-	sets.EnhancingMagic.Stoneskin = {}
+	sets['Enhancing Magic'].Regen = {}
+	sets['Enhancing Magic'].Phalanx = {}
+	sets['Enhancing Magic'].BarSpell = {}
+	sets['Enhancing Magic'].GainSpell = {}
+	sets['Enhancing Magic'].Stoneskin = {}
 	
 	-- Enfeebling Magic Sets
-	sets.EnfeeblingMagic.WhiteMagic = {}
-	sets.EnfeeblingMagic.BlackMagic = {}
+	sets['Enfeebling Magic']['White Magic'] = {}
+	sets['Enfeebling Magic']['Black Magic'] = {}
 	
 	-- Divine Magic Sets
-	sets.DivineMagic.Damage = {}
-	sets.DivineMagic.Flash = {}
-	sets.DivineMagic.Dia = {}
+	sets['Divine Magic'].Damage = {}
+	sets['Divine Magic'].Flash = {}
+	sets['Divine Magic'].Dia = {}
 	
 	-- Ninjutsu Sets
 	sets.Ninjutsu.Damage = {}
@@ -190,43 +190,43 @@ end
 function build_default_sets()
 
 	-- Elemental Magic Sets
-	sets.ElementalMagic = set_combine(sets.Macc, sets.INT)
-	sets.ElementalMagic.Damage = sets.Matk
-	sets.ElementalMagic.Helix = sets.Matk
-	sets.ElementalMagic.Debuff = sets.Macc
-	sets.ElementalMagic.Impact = set_combine(sets.Macc, sets.Matk)--, { head="", body="Twilight Cloak" })
+	sets['Elemental Magic'] = set_combine(sets.Macc, sets.INT)
+	sets['Elemental Magic'].Damage = sets.Matk
+	sets['Elemental Magic'].Helix = sets.Matk
+	sets['Elemental Magic'].Debuff = sets.Macc
+	sets['Elemental Magic'].Impact = set_combine(sets.Macc, sets.Matk)--, { head="", body="Twilight Cloak" })
 	
 	-- Dark Magic Sets
-	sets.DarkMagic = set_combine(sets.Macc, sets.Skill.DarkMagic)
-	sets.DarkMagic.Damage = sets.Enhance.Drain
-	sets.DarkMagic.Stun = set_combine(sets.FastCast, sets.MaxCastReduction, sets.Staves.Accuracy)
-	sets.DarkMagic.Bio = sets.Matk
-	sets.DarkMagic.Absorb = {}
+	sets['Dark Magic'] = set_combine(sets.Macc, sets.Skill['Dark Magic'])
+	sets['Dark Magic'].Damage = sets.Enhance.Drain
+	sets['Dark Magic'].Stun = set_combine(sets.FastCast, sets.MaxCastReduction, sets.Staves.Accuracy)
+	sets['Dark Magic'].Bio = sets.Matk
+	sets['Dark Magic'].Absorb = {}
 	
 	-- Healing Magic Sets
-	sets.HealingMagic = sets.MaxCastReduction
-	sets.HealingMagic.Cursna = set_combine(sets.Skill.HealingMagic, sets.Enhance.Cursna)
-	sets.HealingMagic.Cure = sets.Skill.HealingMagic
-	sets.HealingMagic.StatusRemoval = {}
+	sets['Healing Magic'] = sets.MaxCastReduction
+	sets['Healing Magic'].Cursna = set_combine(sets.Skill['Healing Magic'], sets.Enhance.Cursna)
+	sets['Healing Magic'].Cure = sets.Skill['Healing Magic']
+	sets['Healing Magic'].StatusRemoval = {}
 	
 	-- Enhancing Magic Sets
-	sets.EnhacingMagic = sets.MaxCastReduction
-	sets.EnhancingMagic.Regen = sets.Enhance.Regen
-	sets.EnhancingMagic.Phalanx = sets.Skill.EnhancingMagic
-	sets.EnhancingMagic.BarSpell = sets.Skill.EnhancingMagic
-	sets.EnhancingMagic.GainSpell = sets.Skill.EnhancingMagic
-	sets.EnhancingMagic.Stoneskin = set_combine(sets.MND, sets.Skill.EnhancingMagic, sets.Enhance.Stoneskin)
+	sets['Enhacing Magic'] = sets.MaxCastReduction
+	sets['Enhancing Magic'].Regen = sets.Enhance.Regen
+	sets['Enhancing Magic'].Phalanx = sets.Skill['Enhancing Magic']
+	sets['Enhancing Magic'].BarSpell = sets.Skill['Enhancing Magic']
+	sets['Enhancing Magic'].GainSpell = sets.Skill['Enhancing Magic']
+	sets['Enhancing Magic'].Stoneskin = set_combine(sets.MND, sets.Skill['Enhancing Magic'], sets.Enhance.Stoneskin)
 	
 	-- Enfeebling Magic Sets
-	sets.EnfeeblingMagic = set_combine(sets.Macc, sets.Skill.EnfeeblingMagic)
-	sets.EnfeeblingMagic.WhiteMagic = set_combine(sets.MND, sets.Skill.EnfeeblingMagic)
-	sets.EnfeeblingMagic.BlackMagic = set_combine(sets.INT, sets.Skill.EnfeeblingMagic)
+	sets['Enfeebling Magic'] = set_combine(sets.Macc, sets.Skill['Enfeebling Magic'])
+	sets['Enfeebling Magic']['White Magic'] = set_combine(sets.MND, sets.Skill['Enfeebling Magic'])
+	sets['Enfeebling Magic']['Black Magic'] = set_combine(sets.INT, sets.Skill['Enfeebling Magic'])
 	
 	-- Divine Magic Sets
-	sets.DivineMagic = sets.Macc
-	sets.DivineMagic.Damage = set_combine(sets.MND, sets.Skill.DivineMagic, set.Matk)
-	sets.DivineMagic.Flash = set_combine(sets.FastCast, sets.MaxCastReduction, sets.Skill.DivineMagic)
-	sets.DivineMagic.Dia = set_combine(sets.Matk, sets.Skill.DivineMagic)
+	sets['Divine Magic'] = sets.Macc
+	sets['Divine Magic'].Damage = set_combine(sets.MND, sets.Skill['Divine Magic'], set.Matk)
+	sets['Divine Magic'].Flash = set_combine(sets.FastCast, sets.MaxCastReduction, sets.Skill['Divine Magic'])
+	sets['Divine Magic'].Dia = set_combine(sets.Matk, sets.Skill['Divine Magic'])
 	
 	-- Ninjutsu Sets
 	sets.Ninjutsu = sets.MaxCastReduction
@@ -237,7 +237,7 @@ function build_default_sets()
 	sets.Geomancy = set_combine(sets.MaxCastReduction, sets.Skill.Geomancy)
 	
 	-- Idle Sets
-	sets.Idle.Default = set_combine(sets.ElementalMagic.Damage, sets.MDT, sets.PDT, sets.Refresh)
+	sets.Idle.Default = set_combine(sets['Elemental Magic'].Damage, sets.MDT, sets.PDT, sets.Refresh)
 	
 	sets.Engaged.Melee = set_combine(sets.Haste, { main="Eminent Staff", ear1="Bladeborn Earring", ear2=MoonshadeEarring, ring1="Rajas Ring", ring2="Sun Ring", back="Buquwik Cape" })
 	sets.Engaged.Caster = sets.Idle.Default

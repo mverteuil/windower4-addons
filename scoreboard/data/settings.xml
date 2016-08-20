@@ -82,7 +82,6 @@
                 </stroke>
             </text>
         </display>
-        <visible>true</visible>
     </jooks>
     <kensai>
         <display>
@@ -92,9 +91,10 @@
             </pos>
             <text>
                 <stroke>
-                    <alpha>4.886526383335e+218</alpha>
+                    <alpha>1.3435113216928e+233</alpha>
                 </stroke>
             </text>
         </display>
+        <visible>true</visible>
     </kensai>
 </settings>

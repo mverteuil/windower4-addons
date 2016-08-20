@@ -5,20 +5,19 @@ function file_unload()
 end
 
 function job_precast(spell, action, spellMap, eventArgs)
-
 	local cast_addendum = false
 	local arts_needed = nil
 	local addendum = nil
 	
-	if spell.type == 'WhiteMagic' then
+	if spell.type == 'White Magic' then
 		arts_needed = 'Light Arts'
 		addendum = 'Addendum: White'
-	elseif spell.type == 'BlackMagic' then
+	elseif spell.type == 'Black Magic' then
 		arts_needed = 'Dark Arts'
 		addendum = 'Addendum: Black'
 	end
 	
-	if spell.type == 'WhiteMagic' or spell.type == 'BlackMagic' then
+	if spell.type == 'White Magic' or spell.type == 'Black Magic' then
 		if addendum_spells[arts_needed][spell.name] and not (buffactive[addendum] or buffactive['Enlightenment']) then
 			if not (addendum_spells[player.sub_job] and addendum_spells[player.sub_job][spell.english]) then
 				windower.add_to_chat(123, 'This spell requires the appropriate Addendum or Enlightenment to cast.')
@@ -62,23 +61,23 @@ end
 
 function build_post_midcast_set(spell, action, spellMap)
 
-	if spell.skill == 'EnhancingMagic' and (buffactive['Light Arts'] or buffactive['Addendum: White']) and spellMap ~= 'Regen' then
-		if (sets.EnhancingMagic[spell.name] or sets.EnhancingMagic[spellMap]) then
+	if spell.skill == 'Enhancing Magic' and (buffactive['Light Arts'] or buffactive['Addendum: White']) and spellMap ~= 'Regen' then
+		if (sets['Enhancing Magic'][spell.name] or sets['Enhancing Magic'][spellMap]) then
 			sets.Casting.Midcast = set_combine(sets.Casting.Midcast, sets.Grimoire['Light Arts'])
 		end
 	end
 	
-	if (spell.skill == 'DarkMagic') and (buffactive['Dark Arts'] or buffactive['Addendum: Black']) then
+	if (spell.skill == 'Dark Magic') and (buffactive['Dark Arts'] or buffactive['Addendum: Black']) then
 		if spell.english ~= 'Stun' then
 			sets.Casting.Midcast = set_combine(sets.Casting.Midcast, sets.Grimoire['Dark Arts'])
 		end
 	end
 	
-	if (spell.skill == 'EnfeeblingMagic') and (buffactive['Dark Arts'] or buffactive['Addendum: Black']) then
+	if (spell.skill == 'Enfeebling Magic') and (buffactive['Dark Arts'] or buffactive['Addendum: Black']) then
 		sets.Casting.Midcast = set_combine(sets.Casting.Midcast, sets.Grimoire['Dark Arts'])
 	end
 	
-	if spell.skill == 'ElementalMagic' and spellMap ~= 'Debuff' and buffactive.Klimaform then
+	if spell.skill == 'Elemental Magic' and spellMap ~= 'Debuff' and buffactive.Klimaform then
 		sets.Casting.Midcast = set_combine(sets.Casting.Midcast, sets.Grimoire.Klimaform)
 	end
 

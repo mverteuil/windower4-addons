@@ -9,8 +9,8 @@
             <visible>true</visible>
         </bg>
         <dangerwords>
-            <spells>Thundaja,Kaustra,Thundaga IV,Firaja,Stoneja,Aeroga IV,Breakga,Blizzaja,Meteor,Death,Stonega IV,Blizzaga IV,Firaga IV,Aeroja</spells>
-            <weaponskills>Geirrothr,Yama&apos;s Judgment,Astral Flow,Oblivion&apos;s Mantle,Eradicator,Frog Chorus,Slimy Proposal,Ballistic Kick,Chainspell,Divesting Gale,Rancid Reflux,Thundris Shriek,Mandible Massacre,Gates of Hades,Zantetsuken,Frog Song,Raksha Stance,Arm Cannon,Pawn&apos;s Penumbra,Nerve Gas,Danse Macabre,Fulmination,Extreme Purgitation,Gorge,Beastruction</weaponskills>
+            <spells>Blizzaja,Kaustra,Firaja,Aeroja,Stoneja,Aeroga IV,Breakga,Firaga IV,Meteor,Death,Stonega IV,Blizzaga IV,Thundaja,Thundaga IV</spells>
+            <weaponskills>Geirrothr,Yama&apos;s Judgment,Astral Flow,Oblivion&apos;s Mantle,Eradicator,Frog Chorus,Thundris Shriek,Rancid Reflux,Chainspell,Divesting Gale,Ballistic Kick,Gates of Hades,Mandible Massacre,Extreme Purgitation,Zantetsuken,Frog Song,Fulmination,Arm Cannon,Danse Macabre,Nerve Gas,Pawn&apos;s Penumbra,Raksha Stance,Slimy Proposal,Gorge,Beastruction</weaponskills>
         </dangerwords>
         <duration>10</duration>
         <flags>
@@ -26,7 +26,7 @@
             <legion>Soaring,Mired,Veiled,Paramount,Lofty</legion>
             <meebles>Goldwing,Izyx,Umagrhk,Grannus,Silagilith,Svaha,Samursk,Melisseus,Dreyruk,Surtr</meebles>
             <other>Cerberus,Hydra,Enraged,Dvergr,Khimaira,Bloodthirsty,Odin,Tiamat,Khrysokhimaira</other>
-            <voidwatch>Provenance Watcher,Bismarck,Shah,Wazir,Sarbaz,Hahava,Qilin,Asb,Ig-Alima,Taweret,Mellonia,Botulus Rex,Cherufe,Uptala,Pil,Kalasutrax,Aello,Celaeno,Rukh,Gugalanna,Gasha,Kholomodumo,Ocythoe,Belphoebe,Akvan,Morta,Kaggen,Giltine,Agathos,Gaunab,Goji</voidwatch>
+            <voidwatch>Provenance Watcher,Bismarck,Asb,Wazir,Goji,Hahava,Gaunab,Agathos,Ig-Alima,Taweret,Mellonia,Botulus Rex,Giltine,Uptala,Pil,Kaggen,Aello,Celaeno,Kalasutrax,Gugalanna,Gasha,Kholomodumo,Belphoebe,Ocythoe,Akvan,Morta,Rukh,Cherufe,Shah,Qilin,Sarbaz</voidwatch>
         </moblist>
         <padding>0</padding>
         <pos>

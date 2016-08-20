@@ -4,7 +4,4 @@
         <Auto>false</Auto>
         <Range>10</Range>
     </global>
-    <lygre>
-        <Auto>true</Auto>
-    </lygre>
 </settings>

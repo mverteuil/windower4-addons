@@ -5,31 +5,31 @@
         <AutoNinjaTools>true</AutoNinjaTools>
         <Delay>0.5</Delay>
         <UseUniversalTools>
-            <Aisha>false</Aisha>
-            <Dokumori>false</Dokumori>
-            <Doton>false</Doton>
-            <Gekka>false</Gekka>
-            <Hojo>false</Hojo>
-            <Huton>false</Huton>
-            <Hyoton>false</Hyoton>
-            <Jubaku>false</Jubaku>
-            <Kakka>false</Kakka>
-            <Katon>false</Katon>
-            <Kurayami>false</Kurayami>
-            <Migawari>false</Migawari>
-            <Monomi>false</Monomi>
-            <Myoshu>false</Myoshu>
-            <Raiton>false</Raiton>
-            <Suiton>false</Suiton>
-            <Tonko>false</Tonko>
-            <Utsusemi>false</Utsusemi>
-            <Yain>false</Yain>
-            <Yurin>false</Yurin>
+            <Aisha>true</Aisha>
+            <Dokumori>true</Dokumori>
+            <Doton>true</Doton>
+            <Gekka>true</Gekka>
+            <Hojo>true</Hojo>
+            <Huton>true</Huton>
+            <Hyoton>true</Hyoton>
+            <Jubaku>true</Jubaku>
+            <Kakka>true</Kakka>
+            <Katon>true</Katon>
+            <Kurayami>true</Kurayami>
+            <Migawari>true</Migawari>
+            <Monomi>true</Monomi>
+            <Myoshu>true</Myoshu>
+            <Raiton>true</Raiton>
+            <Suiton>true</Suiton>
+            <Tonko>true</Tonko>
+            <Utsusemi>true</Utsusemi>
+            <Yain>true</Yain>
+            <Yurin>true</Yurin>
         </UseUniversalTools>
         <version>3.0.1.1</version>
     </global>
     <kensai>
-        <AutoItems>false</AutoItems>
+        <AutoItems>true</AutoItems>
         <version>3.0.1.2</version>
     </kensai>
 </settings>

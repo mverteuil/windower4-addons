@@ -9,7 +9,7 @@ packets = require('packets')
 
 defaults = {}
 defaults.Auto = false
-defaults.Range = 5
+defaults.Range = 10
 settings = config.load(defaults)
 
 last = {}
@@ -45,7 +45,6 @@ end
 
 frame_count = 0
 windower.register_event('prerender', function()
-
     if not windower.ffxi.get_info().logged_in then
         frame_count = 0
         return
@@ -71,11 +70,12 @@ windower.register_event('prerender', function()
             open[door.index] = door.id
         end
     end
-	
+
     for id, index in open:it() do
-        windower.packets.inject_outgoing(0x01A, packets.build(packets.new('outgoing', 0x01A, {
+        packets.inject(packets.new('outgoing', 0x01A, {
             ['Target'] = id,
-            ['Target Index'] = index})))
+            ['Target Index'] = index
+        }))
         last[index] = os.time()
     end
 end)

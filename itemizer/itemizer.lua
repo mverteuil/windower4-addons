@@ -33,6 +33,10 @@ defaults.UseUniversalTools.Kakka       = false
 defaults.UseUniversalTools.Gekka       = false
 defaults.UseUniversalTools.Yain        = false
 
+defaults.stash = {}
+defaults.stash.bags = {}
+defaults.stash.bags.safe = {'* crystal', '* beastcoin'}
+
 settings = config.load(defaults)
 bag_ids = res.bags:key_map(string.gsub-{' ', ''} .. string.lower .. table.get-{'english'} .. table.get+{res.bags}):map(table.get-{'id'})
 -- Remove temporary bag, because items cannot be moved from/to there, as such it's irrelevant to Itemizer

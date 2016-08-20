@@ -7,11 +7,21 @@ ADOULIN = S{256, 257}
 SANDORIA = S{230, 231, 232, 233}
 
 function alias_kensai_globals()
-    send_command("alias si input /sneak;wait 7;/invisible;")
-    send_command("alias warp input /equip R.ring \"Warp Ring\"; wait 9; input /item \"Warp Ring\" <me>;")
-    send_command("alias echad input /equip R.ring \"Echad Ring\"; wait 9; input /item \"Echad Ring\" <me>;")
-    send_command("alias empress input /equip R.ring \"Empress Ring\"; wait 9; input /item \"Empress Band\" <me>;")
-    send_command("alias trizek input /equip R.ring \"Trizek Ring\"; wait 9; input /item \"Trizek Ring\" <me>;")   
+    send_command("alias si exec sneakinvis.txt")
+    send_command("alias echadring exec echad.txt")
+    send_command("alias warpring exec warp.txt")
+    send_command("alias trizekring exec trizek.txt")
+    send_command("bind ^1 gs equip Refresh")
+    send_command("bind ^2 gs equip PDT")
+    send_command("bind ^3 gs equip MDT")
+    send_command("bind ^4 gs equip HMP")
+    send_command("bind ^5 gs equip INT")
+    send_command("bind ^6 gs equip MND")
+    send_command("bind ^7 gs equip CurePotency")
+    send_command("bind ^8 gs equip FC")
+    send_command("bind ^9 gs equip Matk")
+    send_command("bind ^0 gs equip Macc")
+    send_command("bind ^- gs equip Haste")
 end
 
 --[ Additional Event Handlers ]--

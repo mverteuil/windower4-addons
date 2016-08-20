@@ -8,11 +8,13 @@ function precast(spell, action)
 	end
 	
 	if eventArgs.cancel then
+		print('cancelled')
 		cancel_spell()
 		return
 	end
 	
 	if eventArgs.handled then
+		print('handled')
 		return
 	end
 	
@@ -52,23 +54,23 @@ function build_midcast_magic_set(spell, action, spellMap, eventArgs)
 
 	sets.Casting.Midcast = sets[spell.skill] or {}
 	
-	if spell.skill == 'ElementalMagic' then
+	if spell.skill == 'Elemental Magic' then
 		build_elemental_magic_set(spell, action, spellMap)
-	elseif spell.skill == 'HealingMagic' then
+	elseif spell.skill == 'Healing Magic' then
 		build_healing_magic_set(spell, action, spellMap)
-	elseif spell.skill == 'DarkMagic' then
+	elseif spell.skill == 'Dark Magic' then
 		build_dark_magic_set(spell, action, spellMap)
-	elseif spell.skill == 'EnhancingMagic' then
+	elseif spell.skill == 'Enhancing Magic' then
 		build_enhancing_magic_set(spell, aciton, spellMap)
-	elseif spell.skill == 'EnfeeblingMagic' then
+	elseif spell.skill == 'Enfeebling Magic' then
 		build_enfeebling_magic_set(spell, action, spellMap)
-	elseif spell.skill == 'DivineMagic' then
+	elseif spell.skill == 'Divine Magic' then
 		build_divine_magic_set(spell, action, spellMap)
 	elseif spell.skill == 'Ninjutsu' then
 		build_ninjutsu_set(spell, action, spellMap)
 	end
 	
-	if (spell.skill == 'ElementalMagic' and spellMap ~= 'Debuff') or spellMap == 'Cure' or spell.english:find('Drain') or spell.english:find('Aspir') or (spell.skill == 'DivineMagic' and not spell.english == 'Flash') then
+	if (spell.skill == 'Elemental Magic' and spellMap ~= 'Debuff') or spellMap == 'Cure' or spell.english:find('Drain') or spell.english:find('Aspir') or (spell.skill == 'Divine Magic' and not spell.english == 'Flash') then
 		weather_check(spell, spellMap)
 	end
 
@@ -80,48 +82,48 @@ end
 
 function build_elemental_magic_set(spell, action, spellMap)
 	
-	if sets.ElementalMagic[spell.english] then
-		sets.Casting.Midcast = set_combine(sets.Casting.Midcast, sets.ElementalMagic[spell.english])
-	elseif sets.ElementalMagic[spellMap] then
-		sets.Casting.Midcast = set_combine(sets.Casting.Midcast, sets.ElementalMagic[spellMap])
+	if sets['Elemental Magic'][spell.english] then
+		sets.Casting.Midcast = set_combine(sets.Casting.Midcast, sets['Elemental Magic'][spell.english])
+	elseif sets['Elemental Magic'][spellMap] then
+		sets.Casting.Midcast = set_combine(sets.Casting.Midcast, sets['Elemental Magic'][spellMap])
 	else
-		sets.Casting.Midcast = set_combine(sets.Casting.Midcast, sets.ElementalMagic.Damage)
+		sets.Casting.Midcast = set_combine(sets.Casting.Midcast, sets['Elemental Magic'].Damage)
 	end
 	
 	if spellMap ~= 'Debuff' and spell.element == 'Earth' then
-		sets.Casting.Midcast = set_combine(sets.Casting.Midcast, sets.ElementalMagic.Earth)
+		sets.Casting.Midcast = set_combine(sets.Casting.Midcast, sets['Elemental Magic'].Earth)
 	end
 
 end
 
 function build_healing_magic_set(spell, action, spellMap)
 
-	if sets.HealingMagic[spell.english] then
-		sets.Casting.Midcast = set_combine(sets.Casting.Midcast, sets.HealingMagic[spell.english])
-	elseif sets.HealingMagic[spellMap] then
-		sets.Casting.Midcast = set_combine(sets.Casting.Midcast, sets.HealingMagic[spellMap])
+	if sets['Healing Magic'][spell.english] then
+		sets.Casting.Midcast = set_combine(sets.Casting.Midcast, sets['Healing Magic'][spell.english])
+	elseif sets['Healing Magic'][spellMap] then
+		sets.Casting.Midcast = set_combine(sets.Casting.Midcast, sets['Healing Magic'][spellMap])
 	end
 
 end
 
 function build_dark_magic_set(spell, action, spellMap)
 	
-	if sets.DarkMagic[spell.english] then
-		sets.Casting.Midcast = set_combine(sets.Casting.Midcast, sets.DarkMagic[spell.english])
-	elseif sets.DarkMagic[spellMap] then
-		sets.Casting.Midcast = set_combine(sets.Casting.Midcast, sets.DarkMagic[spellMap])
+	if sets['Dark Magic'][spell.english] then
+		sets.Casting.Midcast = set_combine(sets.Casting.Midcast, sets['Dark Magic'][spell.english])
+	elseif sets['Dark Magic'][spellMap] then
+		sets.Casting.Midcast = set_combine(sets.Casting.Midcast, sets['Dark Magic'][spellMap])
 	else
-		sets.Casting.Midcast = set_combine(sets.Casting.Midcast, sets.DarkMagic.Damage)
+		sets.Casting.Midcast = set_combine(sets.Casting.Midcast, sets['Dark Magic'].Damage)
 	end
 	
 end
 
 function build_enhancing_magic_set(spell, action, spellMap)
 
-	if sets.EnhancingMagic[spell.name] then
-		sets.Casting.Midcast = set_combine(sets.Casting.Midcast, sets.EnhancingMagic[spell.name])
-	elseif sets.EnhancingMagic[spellMap] then
-		sets.Casting.Midcast = set_combine(sets.Casting.Midcast, sets.EnhancingMagic[spellMap])
+	if sets['Enhancing Magic'][spell.name] then
+		sets.Casting.Midcast = set_combine(sets.Casting.Midcast, sets['Enhancing Magic'][spell.name])
+	elseif sets['Enhancing Magic'][spellMap] then
+		sets.Casting.Midcast = set_combine(sets.Casting.Midcast, sets['Enhancing Magic'][spellMap])
 	end
 
 end
@@ -129,19 +131,19 @@ end
 function build_enfeebling_magic_set(spell, action, spellMap)
 
 	if spellMap == 'Potency' then
-		sets.Casting.Midcast = set_combine(sets.Casting.Midcast, sets.EnfeeblingMagic[spell.type])
+		sets.Casting.Midcast = set_combine(sets.Casting.Midcast, sets['Enfeebling Magic'][spell.type])
 	end
 
 end
 
 function build_divine_magic_set(spell, action, spellMap)
 
-	if sets.DivineMagic[spell.name] then
-		sets.Casting.Midcast = set_combine(sets.Casting.Midcast, sets.DivineMagic[spell.name])
-	elseif sets.DivineMagic[spellMap] then
-		sets.Casting.Midcast = set_combine(sets.Casting.Midcast, sets.DivineMagic[spellMap])
+	if sets['Divine Magic'][spell.name] then
+		sets.Casting.Midcast = set_combine(sets.Casting.Midcast, sets['Divine Magic'][spell.name])
+	elseif sets['Divine Magic'][spellMap] then
+		sets.Casting.Midcast = set_combine(sets.Casting.Midcast, sets['Divine Magic'][spellMap])
 	else
-		sets.Casting.Midcast = set_combine(sets.Casting.Midcast, sets.DivineMagic.Damage)
+		sets.Casting.Midcast = set_combine(sets.Casting.Midcast, sets['Divine Magic'].Damage)
 	end
 
 end

@@ -194,32 +194,3 @@ function self_command(command)
     set_trusts()
     equip(sets[current_weapon].Idle)
 end
-
-
-cheers = {}
-cheers[true] = "cheer"
-cheers[false] = "clap"
-cheer_index = true
-
-windower.register_event('incoming text', function (original, modified, original_mode, modified_mode,blocked)
-    sample = original:lower()
-    if sample:contains("mumor") then
-        if sample:contains("miracle") then
-            send_command("input /dance2 motion <t>")
-        elseif sample:contains("neo") then
-            send_command("input /dance3 motion <t>")
-        elseif sample:contains("shining") then
-            send_command("input /dance1 motion <t>")
-        elseif sample:contains("crusher") then
-            send_command("input /dance3 motion <t>")
-        elseif sample:contains("c'mon everyone!") or sample:contains("please, i need your help!") then
-            send_command("wait 4; input /".. cheers[cheer_index] .." motion <t>; wait 2; input /".. cheers[not cheer_index] .. " motion <t>")
-        end
-    elseif sample:contains("uka") then
-        if sample:contains("grk...") then
-            -- Invert the cheer index for a/b flipping
-            cheer_index = not cheer_index
-            send_command("input /" .. cheers[cheer_index] .. " motion <t>; wait 2; input /".. cheers[not cheer_index] .. " motion <t>");
-        end
-    end
-end)

@@ -32,7 +32,7 @@ function get_sets()
 	--
 	--sets.MaxCastReduction = { waist = "Goading Belt", legs = hagpantsacc, feet = "Hagondes Sabots" }
 	--
-	--sets.Skill.EnhancingMagic.head = "Svnt. Bonnet +2"
+	--sets.Skill['Enhancing Magic'].head = "Svnt. Bonnet +2"
 	--
 	--sets.Enhance.Regen.head = "Svnt. Bonnet +2"
 
@@ -44,7 +44,7 @@ function get_sets()
 	sets.Grimoire['Light Arts'] = {}-- legs = "Scholar's Pants" }
 	sets.Grimoire['Dark Arts'] = {} -- Add Scholar's Gown when obtained
 	sets.Grimoire.Macc = {} -- Savant's Pants +2
-	sets.Grimoire.Celerity = {} -- Add Argute Loafers when obtained
+	sets.Grimoire.Celerity = {feet="Argute Loafers"}
 	sets.Grimoire.Alacrity = sets.Grimoire.Celerity
 	sets.Grimoire.Perpetuance = {}-- hands = "Svnt. Bracers +2" }
 	sets.Grimoire.Immanence = sets.Grimoire.Perpetuance
@@ -54,6 +54,8 @@ function get_sets()
 	sets.Grimoire.Ebullience = sets.Grimoire.Rapture
 	sets.Grimoire.Klimaform = {} -- Add Savant's Loafers when obtained
 	
+	sets.JA.Sublimation = {head="Acad. Mortar. +1"}
+
 	-- Build Default Sets
 	build_default_sets()
 	
@@ -82,7 +84,6 @@ function job_self_command(commandParams, eventArgs)
 		stopBuffWatcher()
 	end
 	if commandParams[1] == 'soloSC' then
-		print('hi there!')
 		if not commandParams[2] or not commandParams[3] then
 			errlog('missing required parameters for function soloSkillchain')
 			return
@@ -90,4 +91,48 @@ function job_self_command(commandParams, eventArgs)
 			soloSkillchain(commandParams[2],commandParams[3],commandParams[4],commandParams[5])
 		end
 	end	
+end
+
+function set_aliases()
+    send_command("alias g13_m1g1 input /dia3")
+    send_command("alias g13_m1g2 input /slow2")
+    send_command("alias g13_m1g3 input /paralyze2")
+    send_command("alias g13_m1g4 input /gravity")
+    send_command("alias g13_m1g5 input /distract")
+    send_command("alias g13_m1g6 input /bio3")
+    send_command("alias g13_m1g7 input /stun")
+
+    send_command("alias g13_m1g8 input /stone4")
+    send_command("alias g13_m1g9 input /water4")
+    send_command("alias g13_m1g10 input /aero4")
+    send_command("alias g13_m1g11 input /fire4")
+    send_command("alias g13_m1g12 input /blizzard4")
+    send_command("alias g13_m1g13 input /thunder4")
+    send_command("alias g13_m1g14 input /elementalseal")
+
+    send_command("alias g13_m1g15 input /composure")
+    send_command("alias g13_m1g16 input /haste2 <st>")
+    send_command("alias g13_m1g17 input /refresh2 <st>")
+    send_command("alias g13_m1g18 input /stoneskin")
+    send_command("alias g13_m1g19 input /phalanx2")
+
+    send_command("alias g13_m1g20 input /blink")
+    send_command("alias g13_m1g21 input /cure4 st")
+    send_command("alias g13_m1g22 input /cure4 me")
+
+    send_command("alias stp_m1 input /awh")
+    send_command("alias stp_m2 input /saboteur")
+    send_command("alias stp_m3 input /stymie")
+    send_command("alias stp_m4 input /temper")
+    send_command("alias stp_m5 input /gainstr")
+
+    send_command("alias stp_m6 input /abl")
+    send_command("alias stp_m7 input /sanguineblade")
+    send_command("alias stp_m8 input /enfire2")
+    send_command("alias stp_m9 input /dispel")
+    send_command("alias stp_m10 input /enthunder")
+
+    send_command("alias stp_m11 input //invert")
+    send_command("alias stp_m12 input /cure4 <st>")
+    send_command("alias stp_m13 input /cure4 me")
 end

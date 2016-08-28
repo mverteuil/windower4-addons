@@ -53,3 +53,5 @@ scoreboard/data/parses/sb_2016-jul-24-20-51-23.txt
 *.pyc
 *.log
 fisher/data/Kensai.log
+*.log
+fisher/data/Kensai.log

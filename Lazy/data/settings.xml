@@ -4,11 +4,12 @@
         <autotarget>false</autotarget>
         <spell />
         <spell_active>false</spell_active>
-        <target />
+        <targetlist />
         <weaponskill>Aeolian Edge</weaponskill>
         <weaponskill_active>true</weaponskill_active>
     </global>
     <kensai>
         <autotarget>true</autotarget>
+        <targetlist>your mom,clipper</targetlist>
     </kensai>
 </settings>

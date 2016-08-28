@@ -22,11 +22,17 @@ function init_mage_gear()
 		These sets are static, they do not change ever.  They are used as base sets for the dynamic sets
 	--]]
 	
+	-- Augmented Gear
+	HagondesCoat = { name="Hagondes Coat +1", augments={'Phys. dmg. taken -3%','Magic dmg. taken -2%','"Avatar perpetuation cost" -4',}}
+	HagondesHat = { name="Hagondes Hat +1", augments={'Phys. dmg. taken -1%',}}
+	Lehbrailg = { name="Lehbrailg +2", augments={'DMG:+17','CHR+4','"Mag.Atk.Bns."+18',}}
+	MoonshadeEarring = {name="Moonshade Earring", augments={'Attack+4','Latent effect: "Regain"+1'}}		
+	
 	-- Staff Declarations
-	sets.Staves = { main="Eminent Staff"}
-	sets.Staves.Damage = { main="Eminent Staff" }
-	sets.Staves.Accuracy = { main="Eminent Staff" }
-	sets.Staves.CastTime = { main="Eminent Staff" }
+	sets.Staves = { main=Lehbrailg, sub="Vivid Strap" }
+	sets.Staves.Damage = { main=Lehbrailg }
+	sets.Staves.Accuracy = { main=Lehbrailg }
+	sets.Staves.CastTime = { main=Lehbrailg }
 	
 	sets.Staves.Cure = { main="Tamaxchi" }
 		
@@ -41,34 +47,32 @@ function init_mage_gear()
 	sets.Obis.Light = { waist="Korin Obi" }
 	sets.Obis.Dark = { waist="Anrin Obi" }
 	
-	-- Augmented Gear
-	MoonshadeEarring = {name="Moonshade Earring", augments={'Attack+4','Latent effect: "Regain"+1'}}		
-	
+
 	-- BaseSets
-	sets.Hagondes = { head="Hagondes Hat +1", body="Wayfarer Robe", hands="Yaoyotl Gloves", legs="Wayfarer Slops", feet="Kandza Crackows" }
+	sets.Hagondes = { head=HagondesHat, body=HagondesCoat, hands="Hagondes Cuffs", legs="Hagondes Pants", feet="Hagondes Sabots" }
 
 	sets.Refresh = { head="Wayfarer Circlet", body="Wayfarer Robe", hands="Wayfarer Cuffs", legs="Wayfarer Slops", feet="Wayfarer Clogs" }
 	
 	sets.Kite = {}-- feet="Desert Boots" }
 	
-	sets.DT = {}-- neck="Twilight Torque" }
-	sets.PDT = set_combine(sets.DT, { main="Earth Staff", body="Wayfarer Robe", legs="Wayfarer Slops" })
-	sets.MDT = set_combine(sets.Hagondes, sets.DT)
+	sets.DT = { ring2="Griffon Ring" }
+	sets.PDT = set_combine(sets.DT, { main="Earth Staff", legs="Wayfarer Slops" })
+	sets.MDT = set_combine(sets.Hagondes, sets.DT, { waist="Slipor Sash", legs="Espial Hose" })
 	
 	sets.Haste = set_combine(sets.Hagondes, { waist="Paewr Belt" })
 	
 	sets.HMP = { main="Iridial Staff", ammo="Clarus Stone" }
 	
 	sets.INT = set_combine(sets.Hagondes, { ammo="Morion Tathlum", ring1="Acumen Ring", ring2="Weatherspoon Ring" })
-	sets.MND = set_combine(sets.Hagondes, { ring1="Perception Ring", back="Pahtli Cape", waist="Salire Belt" })
+	sets.MND = set_combine(sets.Hagondes, { ring1="Perception Ring", ring2="Globidonta Ring", back="Pahtli Cape", waist="Salire Belt" })
 	
-	sets.Matk = set_combine(sets.Staves.Damage, sets.Hagondes, { ammo="Morion Tathlum", neck="Incanter's Torque", ear2="Moldavite Earring", waist="Salire Belt" })
+	sets.Matk = set_combine(sets.Staves.Damage, sets.Hagondes, { ammo="Morion Tathlum", neck="Incanter's Torque", ear2="Moldavite Earring", hands="Yaoyotl Gloves", waist="Salire Belt" })
 	
 	sets.Macc = set_combine(sets.Staves.Accuracy, sets.Hagondes, { ammo="Morion Tathlum", neck="Incanter's Torque", waist="Salire Belt" })
 	
-	sets.CurePotency = set_combine(sets.Staves.Cure, { body="Wayfarer Robe", hands="Yaoyotl Gloves", back="Pahtli Cape", legs="Wayfarer Slops", feet="Kandza Crackows" })
+	sets.CurePotency = set_combine(sets.Staves.Cure, { body="Gendewitha Bliaut", hands="Yaoyotl Gloves", back="Pahtli Cape", legs="Wayfarer Slops", feet="Kandza Crackows" })
 	
-	sets.FC = set_combine(sets.Staves.CastTime, { sub="Vivid Strap", ring2="Weatherspoon Ring", legs="Orvail Pants +1", feet="Chelona Boots" })
+	sets.FC = set_combine(sets.Staves.CastTime, { sub="Vivid Strap", ring2="Weatherspoon Ring", hands="Gendewitha Gages", legs="Orvail Pants +1" })
 	sets.FC['Elemental Magic'] = { neck="Incanter's Torque" }
 	sets.FC['Elemental Magic'].Impact = {}-- head="", body="Twilight Cloak" }
 	sets.FC['Healing Magic'] = {}
@@ -76,7 +80,7 @@ function init_mage_gear()
 	sets.FC['Enhancing Magic'] = {}-- waist="Siegel Sash" }
 	sets.FC['Enhancing Magic'].Stoneskin = {}-- hands="Carapacho Mitts" }
 	
-	sets.MaxCastReduction = {}-- hands="Hagondes Cuffs", waist="Goading Belt", legs="Hagondes Pants", feet="Hagondes Sabots" }
+	sets.MaxCastReduction = { hands="Hagondes Cuffs", legs="Hagondes Pants", feet="Hagondes Sabots" }
 	
 	sets.Skill = {}
 	sets.Skill['Elemental Magic'] = {}
@@ -84,7 +88,7 @@ function init_mage_gear()
 	sets.Skill['Healing Magic'] = {}-- ring2 = "Sirona's Ring"}
 	sets.Skill['Enhancing Magic'] = {}-- sub="Fulcio Grip", body="Anhur Robe", waist="Olympus Sash" }
 	sets.Skill['Enfeebling Magic'] = {}-- sub="Macero Grip" }
-	sets.Skill['Divine Magic'] = {}-- sub="Divinus Grip" }
+	sets.Skill['Divine Magic'] = { ring2="Globidonta Ring" }
 	sets.Skill.Geomancy = {}
 	sets.Skill.Ninjutsu = {}
 	sets.Skill.Geomancy = {}

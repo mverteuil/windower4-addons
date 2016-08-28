@@ -50,6 +50,7 @@ defaults.fatigue.date = os.date('!%Y-%m-%d', os.time() + 32400)
 defaults.fatigue.remaining = 200
 defaults.didnotcatchmax = 20
 defaults.fish = {}
+defaults.allowmonsters = false
 
 -- global variables
 
@@ -460,6 +461,12 @@ function check_incoming_chunk(id, original, modified, injected, blocked)
                 current.key = original:sub(21)
                 stats.bites = stats.bites + 1
                 message(2, 'catching fish when low on time')
+            elseif current.monster == true and settings.monstersallowed then
+                current.key = original:sub(21)
+                stats.bites = stats.bites + 1
+                local delay = 2.0 + (settings.random and 1.0 - math.random()*2 or 0.0)
+                message(14, 'catching monster in %.2f seconds':format(delay))
+                windower.send_command('wait %.2f; lua i fisher catch %.2f':format(delay, stats.casts))
             else
 				local releasedelay = settings.delay.release + (settings.random and math.random()*2 or 0.0)
 				message(2, 'releasing fish in %.2f seconds':format(releasedelay))
@@ -695,6 +702,10 @@ function fisher_command(...)
         settings.senses = (arg[2]:lower() == 'on')
         windower.add_to_chat(204, 'display hooked fish: %s':format(settings.senses and 'on' or 'off'))
         settings:save('all')
+    elseif #arg == 2 and arg[1]:lower() == 'monsters' then
+        settings.monstersallowed = (arg[2]:lower() == 'on')
+        windower.add_to_chat(204, 'monsters allowed: %s':format(settings.monstersallowed and 'on' or 'off'))
+        settings:save('all')
     elseif #arg == 1 and arg[1]:lower() == 'resetdb' then
         settings.fish = {}
         settings:save('all')
@@ -763,6 +774,7 @@ function fisher_command(...)
         windower.add_to_chat(167, '  fisher equip <on/off>')
         windower.add_to_chat(167, '  fisher move <on/off>')
         windower.add_to_chat(167, '  fisher senses <on/off>')
+        windower.add_to_chat(167, '  fisher monstersallowed <on/off>')
         windower.add_to_chat(167, '  fisher fatigue <count>')
         windower.add_to_chat(167, '  fisher stats [clear]')
         windower.add_to_chat(167, '  fisher resetdb')

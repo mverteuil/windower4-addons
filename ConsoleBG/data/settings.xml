@@ -16,4 +16,10 @@
             <y>25</y>
         </pos>
     </global>
+    <kensai>
+        <pos>
+            <x>15</x>
+            <y>50</y>
+        </pos>
+    </kensai>
 </settings>

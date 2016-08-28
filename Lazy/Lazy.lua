@@ -1,6 +1,8 @@
 require('chat')
 require('logger')
 require('tables')
+require('sets')
+require('strings')
 config = require('config')
 res = require('resources')
 packets = require('packets')
@@ -24,7 +26,7 @@ defaults.spell_active = false
 defaults.weaponskill = ""
 defaults.weaponskill_active = false
 defaults.autotarget = false
-defaults.target = ""
+defaults.targetlist = S{}
 
 settings = config.load(defaults)
 
@@ -74,7 +76,7 @@ windower.register_event('addon command', function (...)
 		windower.add_to_chat(11,"Use Spell "..tostring(settings.spell_active))
 		windower.add_to_chat(11,"Weaponskill: "..settings.weaponskill)
 		windower.add_to_chat(11,"Use Weaponskill: "..tostring(settings.weaponskill_active))
-		windower.add_to_chat(11,"Target:"..settings.target)
+		windower.add_to_chat(11,"Target(s): "..settings.targetlist:tostring())
 	elseif args[1] == "autotarget" then
 		if args[2] == "on" then
 			settings.autotarget = true
@@ -83,8 +85,10 @@ windower.register_event('addon command', function (...)
 			settings.autotarget = false
 			windower.add_to_chat(3,"Autotarget: False")
 		end
-	elseif args[1] == "target" then
-		settings.target = args[2]
+	elseif args[1] == "addtarget" then
+		settings.targetlist:add(args[2]:trim())
+	elseif args[1] == "removetarget" then
+		settings.targetlist:remove(args[2]:trim())
 	end
 end)
 
@@ -104,18 +108,20 @@ function TurnToTarget()
 	end
 end
 
-function Find_Nearest_Target(target)
+function Find_Nearest_Target()
 	local id_targ = -1
 	local dist_targ = -1
 	local marray = windower.ffxi.get_mob_array()
 	for key,mob in pairs(marray) do
-		if string.lower(mob["name"]) == string.lower(target) and mob["valid_target"] and mob["hpp"] == 100 then
-			if dist_targ == -1 then
-				id_targ = key
-				dist_targ = math.sqrt(mob["distance"])
-			elseif math.sqrt(mob["distance"]) < dist_targ then
-				id_targ = key
-				dist_targ = math.sqrt(mob["distance"])
+		if mob["valid_target"] and mob["hpp"] == 100 then
+			if settings.targetlist:contains(mob["name"]:lower()) then
+				if dist_targ == -1 then
+					id_targ = key
+					dist_targ = math.sqrt(mob["distance"])
+				elseif math.sqrt(mob["distance"]) < dist_targ then
+					id_targ = key
+					dist_targ = math.sqrt(mob["distance"])
+				end
 			end
 		end
 	end
@@ -161,9 +167,10 @@ function Combat()
 			Cast_Spell(settings.spell)
 		end
 	elseif settings.autotarget == true then
-		if Find_Nearest_Target(settings.target) > 0 then
-			windower.ffxi.follow(Find_Nearest_Target(settings.target))
-			if math.sqrt(windower.ffxi.get_mob_by_index(Find_Nearest_Target(settings.target)).distance) < 3 then
+		local nearest_target = Find_Nearest_Target()
+		if nearest_target > 0 then
+			windower.ffxi.follow(nearest_target)
+			if math.sqrt(windower.ffxi.get_mob_by_index(nearest_target).distance) < 3 then
 				windower.send_command("input /targetbnpc")
 				windower.send_command("input /attack on")
 			end
@@ -185,7 +192,7 @@ function Can_Cast_Ability(ability)
 	local result = false
 	local myability = res.job_abilities:with('name',ability)
 	Recasts = windower.ffxi.get_ability_recasts()
-	print("Checking:"..myability.name)
+	logger.info("Checking:"..myability.name)
 	if (Recasts[myability.recast_id] == 0) and (not isCasting) and (isBusy == 0) then
 		result = true
 	end

@@ -1,6 +1,7 @@
 <?xml version="1.1" ?>
 <settings>
     <global>
+        <allowmonsters>false</allowmonsters>
         <chat>2</chat>
         <delay>
             <cast>4</cast>
@@ -11,8 +12,8 @@
         <didnotcatchmax>20</didnotcatchmax>
         <equip>true</equip>
         <fatigue>
-            <date>2016-08-21</date>
-            <remaining>152</remaining>
+            <date>2016-08-28</date>
+            <remaining>48</remaining>
         </fatigue>
         <fish>
             <13107215>4500</13107215>
@@ -55,6 +56,7 @@
             <36700170>4579</36700170>
             <36700172>4307</36700172>
             <36700173>4426</36700173>
+            <39321601>4443</39321601>
             <39321606>4361</39321606>
             <40632322>624</40632322>
             <40632323>1135</40632323>
@@ -68,6 +70,8 @@
             <45875202>4484</45875202>
             <45875203>1210</45875203>
             <47185921>4443</47185921>
+            <47185927>5133</47185927>
+            <47185932>4384</47185932>
             <48496643>14117</48496643>
             <49807364>5453</49807364>
             <49807370>4470</49807370>
@@ -79,6 +83,7 @@
             <68157445>5128</68157445>
         </fish>
         <log>3</log>
+        <monstersallowed>false</monstersallowed>
         <move>true</move>
         <random>true</random>
         <senses>true</senses>

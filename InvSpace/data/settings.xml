@@ -138,6 +138,19 @@
             </text>
         </display>
     </doroti>
+    <kensai>
+        <display>
+            <pos>
+                <x>1217</x>
+                <y>488</y>
+            </pos>
+            <text>
+                <stroke>
+                    <alpha>-64770</alpha>
+                </stroke>
+            </text>
+        </display>
+    </kensai>
     <lyger>
         <display>
             <bg>
@@ -157,6 +170,10 @@
     </lyger>
     <lygre>
         <display>
+            <bg>
+                <alpha>102</alpha>
+                <visible>false</visible>
+            </bg>
             <pos>
                 <x>1023</x>
                 <y>295</y>
